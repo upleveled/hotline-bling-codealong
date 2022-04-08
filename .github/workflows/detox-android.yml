@@ -19,6 +19,16 @@ jobs:
       - name: Node
         uses: actions/setup-node@v3
 
+      - name: Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build app with EAS
+        run: eas build --platform=android --non-interactive
+
       - name: Use specific Java version for sdkmanager to work
         uses: joschi/setup-jdk@v2
         with:
