@@ -10,8 +10,12 @@ module.exports = {
     android: {
       type: 'android.apk',
       build:
-        'eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-release.apk',
-      binaryPath: 'e2e/bin/app-release.apk',
+        'eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-test.apk',
+      // These both need to be configured for Detox to not
+      // auto-generate an incorrect, nonexistent path
+      // https://github.com/wix/Detox/issues/2274
+      binaryPath: 'e2e/bin/app-test.apk',
+      testBinaryPath: 'e2e/bin/app-test.apk',
     },
   },
   devices: {
