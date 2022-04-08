@@ -7,8 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
-    timeout-minutes: 15
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -46,7 +45,7 @@ jobs:
         run: |
           yarn detox build -c android
       - name: Android Emulator
-        timeout-minutes: 10
+        timeout-minutes: 20
         continue-on-error: true
         run: |
           echo "Starting emulator"
