@@ -43,7 +43,7 @@ jobs:
         uses: bahmutov/npm-install@v1
       # - name: Build for detox
       #   run: |
-      #     yarn detox build -c android
+      #     yarn detox build --configuration android
       - name: Android Emulator
         timeout-minutes: 20
         continue-on-error: true
@@ -54,4 +54,4 @@ jobs:
           $ANDROID_HOME/platform-tools/adb devices
           echo "Emulator started"
       - name: Android Detox
-        run: yarn start & yarn detox test -c android
+        run: yarn detox test --configuration android
