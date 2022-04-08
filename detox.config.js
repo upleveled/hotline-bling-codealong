@@ -14,7 +14,7 @@ module.exports = {
       // These both need to be configured for Detox to not
       // auto-generate an incorrect, nonexistent path
       // https://github.com/wix/Detox/issues/2274
-      binaryPath: 'e2e/bin/app-release.apk',
+      binaryPath: 'e2e/bin/app-test.apk',
       testBinaryPath: 'e2e/bin/app-test.apk',
     },
   },
