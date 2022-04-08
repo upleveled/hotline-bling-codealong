@@ -9,7 +9,8 @@
     },
     "android": {
       "type": "android.apk",
-      "binaryPath": "SPECIFY_PATH_TO_YOUR_APP_BINARY"
+      "build": "eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-release.apk",
+      "binaryPath": "e2e/bin/app-release.apk"
     }
   },
   "devices": {
