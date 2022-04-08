@@ -57,4 +57,4 @@ jobs:
           echo "Emulator started"
 
       - name: Android Detox
-        run: yarn detox test --configuration android || /Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk
+        run: yarn detox test --configuration android || /Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk && yarn detox test --configuration android
