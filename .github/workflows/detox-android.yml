@@ -25,8 +25,8 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      # - name: Build app with EAS
-      #   run: eas build --platform=android --profile emulator --non-interactive
+      - name: Build app with EAS
+        run: eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-release.apk
 
       - name: Use specific Java version for sdkmanager to work
         uses: joschi/setup-jdk@v2
@@ -41,9 +41,9 @@ jobs:
           $ANDROID_HOME/emulator/emulator -list-avds
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
-      - name: Build for detox
-        run: |
-          yarn detox build -c android
+      # - name: Build for detox
+      #   run: |
+      #     yarn detox build -c android
       - name: Android Emulator
         timeout-minutes: 20
         continue-on-error: true
