@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.karlhorky.hotlineblingcodealong"
@@ -34,5 +32,8 @@
       "backgroundColor": "#000000",
       "barStyle": "light-content"
     }
+  },
+  "autolinking": {
+    "exclude": ["react-native-reanimated"]
   }
 }
