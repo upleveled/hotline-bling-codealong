@@ -12,7 +12,8 @@
     },
     "emulator": {
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "gradleCommand": "assembleDebug"
       }
     },
     "simulator": {
