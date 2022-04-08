@@ -9,8 +9,8 @@
     },
     "android": {
       "type": "android.apk",
-      "build": "eas build --platform=android --profile emulator --non-interactive --local --output=e2e/androidTest/release/app-release-androidTest.apk",
-      "binaryPath": "e2e/androidTest/release/app-release-androidTest.apk"
+      "build": "eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-release.apk",
+      "binaryPath": "e2e/bin/app-release.apk"
     }
   },
   "devices": {

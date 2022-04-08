@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Build app with EAS
-        run: eas build --platform=android --profile emulator --non-interactive --local --output=e2e/androidTest/release/app-release-androidTest.apk
+        run: yarn detox build --configuration android
 
       - name: Use specific Java version for sdkmanager to work
         uses: joschi/setup-jdk@v2
@@ -46,9 +46,6 @@ jobs:
           echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_x86 --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
           $ANDROID_HOME/emulator/emulator -list-avds
 
-      # - name: Build for detox
-      #   run: |
-      #     yarn detox build --configuration android
       - name: Android Emulator
         timeout-minutes: 20
         continue-on-error: true
