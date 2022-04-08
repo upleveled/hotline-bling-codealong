@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Build app with EAS
-        run: eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-release.apk
+        run: eas build --platform=android --profile emulator --non-interactive --local --output=e2e/androidTest/release/app-release-androidTest.apk
 
       - name: Use specific Java version for sdkmanager to work
         uses: joschi/setup-jdk@v2
