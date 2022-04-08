@@ -40,9 +40,8 @@ jobs:
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
           echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_x86 --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
           $ANDROID_HOME/emulator/emulator -list-avds
-      - name: Install node_modules
-        run: |
-          yarn install --frozen-lockfile
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
       - name: Build for detox
         run: |
           yarn detox build -c android
