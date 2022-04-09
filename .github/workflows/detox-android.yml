@@ -68,6 +68,6 @@ jobs:
         run: |
           open -a Simulator.app
           sleep 10
-          xcrun simctl install booted ./bin/easdetoxci.app
+          xcrun simctl install booted ./e2e/bin/hotlineblingcodealong.app
           sleep 15
           yarn detox test --configuration ios
