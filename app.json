@@ -15,13 +15,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.karlhorky.hotlineblingcodealong"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.karlhorky.hotlineblingcodealong"
     },
     "web": {
       "favicon": "./assets/icon.png"
@@ -30,5 +32,6 @@
       "backgroundColor": "#000000",
       "barStyle": "light-content"
     }
-  }
+  },
+  "plugins": ["@config-plugins/detox"]
 }
