@@ -34,8 +34,5 @@
       "barStyle": "light-content"
     }
   },
-  "plugins": ["@config-plugins/detox"],
-  "autolinking": {
-    "exclude": ["react-native-reanimated"]
-  }
+  "plugins": ["@config-plugins/detox"]
 }
