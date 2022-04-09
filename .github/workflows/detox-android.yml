@@ -63,7 +63,9 @@ jobs:
         run: |
           brew tap wix/brew
           brew install applesimutils
-
+      - run: pwd
+      - run: ls -al
+      - run: ls -al ./e2e/bin
       - name: Open simulator, run tests
         run: |
           open -a Simulator.app
