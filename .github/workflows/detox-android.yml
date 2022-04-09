@@ -31,6 +31,8 @@ jobs:
       #     eas-version: latest
       #     token: ${{ secrets.EXPO_TOKEN }}
 
+      - run: expo prebuild --platform ios
+
       - name: Build iOS app locally with EAS
         run: yarn detox build --configuration ios
 
