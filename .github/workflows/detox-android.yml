@@ -59,17 +59,20 @@ jobs:
       # - name: Android Detox
       #   run: yarn detox test --configuration android || /Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk && yarn detox test --configuration android
 
-      - name: Setup detox
+      - name: Setup Detox
         run: |
           brew tap wix/brew
           brew install applesimutils
-      - run: pwd
-      - run: ls -al
-      - run: ls -al ./e2e/bin
-      - name: Open simulator, run tests
+
+      - name: Open iOS Simulator
         run: |
           open -a Simulator.app
           sleep 10
-          xcrun simctl install booted /Users/runner/work/hotline-bling-codealong/hotline-bling-codealong/e2e/bin/hotlineblingcodealong.app
+
+      - name: Run app in Simulator
+        run: |
+          xcrun simctl install booted ./e2e/bin/hotlineblingcodealong.app
           sleep 15
-          yarn detox test --configuration ios
+
+      - name: Run tests
+        run: yarn detox test --configuration ios
