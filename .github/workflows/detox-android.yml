@@ -31,30 +31,43 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build app with EAS
-        run: yarn detox build --configuration android
+      - name: Build iOS app locally with EAS
+        run: yarn detox build --configuration ios
 
-      - name: Use specific Java version for sdkmanager to work
-        uses: joschi/setup-jdk@v2
-        with:
-          java-version: 'openjdk8'
-          architecture: 'x64'
+      # - name: Use specific Java version for sdkmanager to work
+      #   uses: joschi/setup-jdk@v2
+      #   with:
+      #     java-version: 'openjdk8'
+      #     architecture: 'x64'
 
-      - name: Download Android Emulator Image
+      # - name: Download Android Emulator Image
+      #   run: |
+      #     echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
+      #     echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_x86 --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
+      #     $ANDROID_HOME/emulator/emulator -list-avds
+
+      # - name: Android Emulator
+      #   timeout-minutes: 20
+      #   continue-on-error: true
+      #   run: |
+      #     echo "Starting emulator"
+      #     nohup $ANDROID_HOME/emulator/emulator -avd Pixel_3a_API_30_x86 -no-audio -no-snapshot -no-window &
+      #     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+      #     $ANDROID_HOME/platform-tools/adb devices
+      #     echo "Emulator started"
+
+      # - name: Android Detox
+      #   run: yarn detox test --configuration android || /Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk && yarn detox test --configuration android
+
+      - name: Setup detox
         run: |
-          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_x86 --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
-          $ANDROID_HOME/emulator/emulator -list-avds
+          brew tap wix/brew
+          brew install applesimutils
 
-      - name: Android Emulator
-        timeout-minutes: 20
-        continue-on-error: true
+      - name: Open simulator, run tests
         run: |
-          echo "Starting emulator"
-          nohup $ANDROID_HOME/emulator/emulator -avd Pixel_3a_API_30_x86 -no-audio -no-snapshot -no-window &
-          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-          $ANDROID_HOME/platform-tools/adb devices
-          echo "Emulator started"
-
-      - name: Android Detox
-        run: yarn detox test --configuration android || /Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk && yarn detox test --configuration android
+          open -a Simulator.app
+          sleep 10
+          xcrun simctl install booted ./bin/easdetoxci.app
+          sleep 15
+          yarn detox test --configuration ios
