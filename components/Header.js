@@ -22,7 +22,7 @@ const headerStyles = StyleSheet.create({
 export default function Header(props) {
   return (
     <SafeAreaView style={headerStyles.safeAreaView}>
-      <View style={headerStyles.wrapper}>
+      <View style={headerStyles.wrapper} testID="HeaderView">
         <Text style={headerStyles.label}>{props.label}</Text>
       </View>
     </SafeAreaView>

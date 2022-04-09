@@ -8,6 +8,6 @@ describe('Example', () => {
   });
 
   it('should have header element', async () => {
-    await expect(element(by.id('header'))).toBeVisible();
+    await expect(element(by.id('HeaderView'))).toBeVisible();
   });
 });

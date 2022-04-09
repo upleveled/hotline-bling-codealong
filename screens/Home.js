@@ -18,7 +18,7 @@ export default function Home() {
   });
   return (
     <Screen>
-      <Header label="Guest List" testID="header" />
+      <Header label="Guest List" />
       <Container fill>
         {items.length > 0 && (
           <ScrollView style={{ flex: 1 }}>
