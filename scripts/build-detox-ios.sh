@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Originally from these examples:
+# https://github.com/calitb/expo-e2e-demo/blob/main/scripts/build-detox-ios.sh
+# https://github.com/calitb/expo-e2e-demo/wiki/Setup-Github-Workflow-to-run-e2e-in-an-Expo-project-using-Detox
+# https://github.com/expo/config-plugins/tree/main/apps/app
+
 # This script wraps the xcodebuild command and exits with non-zero if the build fails.
 #
 # This ensures that CI fails on the correct step instead of attempting to run Detox tests without a
