@@ -5,9 +5,12 @@ module.exports = {
   apps: {
     ios: {
       type: 'ios.app',
-      build:
-        'eas build --platform ios --profile simulator --non-interactive --local --output=e2e/bin/hotlineblingcodealong.app',
-      binaryPath: './e2e/bin/hotlineblingcodealong.app',
+      // build:
+      //   'eas build --platform ios --profile simulator --non-interactive --local --output=e2e/bin/hotlineblingcodealong.app',
+      // binaryPath: './e2e/bin/hotlineblingcodealong.app',
+      build: './scripts/build-detox-ios.sh hotlineblingcodealong Release YES',
+      binaryPath:
+        'ios/build/Build/Products/Release-iphonesimulator/hotlineblingcodealong.app',
     },
     android: {
       type: 'android.apk',
