@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.karlhorky.hotlineblingcodealong"
+      "bundleIdentifier": "hotlineblingcodealong"
     },
     "android": {
       "adaptiveIcon": {
