@@ -24,14 +24,14 @@ jobs:
       # - name: Install sharp for faster image generation in EAS https://github.com/expo/expo-cli/issues/2676
       #   run: yarn global add sharp-cli
 
-      # - name: Setup Expo and EAS
-      #   uses: expo/expo-github-action@v7
-      #   with:
-      #     expo-version: latest
-      #     eas-version: latest
-      #     token: ${{ secrets.EXPO_TOKEN }}
+      - name: Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      - run: yarn expo prebuild --platform ios
+      - run: expo prebuild --platform ios
 
       - name: Build iOS app locally with EAS
         run: yarn detox build --configuration ios
