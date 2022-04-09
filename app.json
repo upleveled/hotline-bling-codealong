@@ -3,6 +3,7 @@
     "name": "hotline-bling-codealong",
     "slug": "hotline-bling-codealong",
     "version": "1.0.0",
+    "jsEngine": "hermes",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
