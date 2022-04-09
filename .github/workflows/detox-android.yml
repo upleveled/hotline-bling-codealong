@@ -69,10 +69,10 @@ jobs:
           open -a Simulator.app
           sleep 10
 
-      - name: Run app in Simulator
-        run: |
-          xcrun simctl install booted ./e2e/bin/hotlineblingcodealong.app
-          sleep 15
+      # - name: Run app in Simulator
+      #   run: |
+      #     xcrun simctl install booted ./e2e/bin/hotlineblingcodealong.app
+      #     sleep 15
 
       - name: Run tests
         run: yarn detox test --configuration ios
