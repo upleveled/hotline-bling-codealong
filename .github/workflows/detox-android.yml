@@ -1,5 +1,7 @@
-name: Detox Integration Tests - Android
+name: Detox Integration Tests - iOS
+
 on: [push]
+
 jobs:
   build:
     runs-on: macos-latest
@@ -13,60 +15,27 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
-      # - name: Install sharp for faster image generation in EAS https://github.com/expo/expo-cli/issues/2676
-      #   run: yarn global add sharp-cli
+      # Sharp CLI enables faster image generation during build
+      # https://github.com/expo/expo-cli/issues/2676
+      - name: Install Sharp CLI for faster image generation during build
+        run: yarn global add sharp-cli
 
-      - name: Setup Expo and EAS
+      - name: Setup Expo
         uses: expo/expo-github-action@v7
         with:
           expo-version: latest
-          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - run: expo prebuild --platform ios
+      - name: Prepare files for xcodebuild command
+        run: expo prebuild --platform ios
 
-      - name: Build iOS app locally with EAS
+      - name: Build iOS app locally with xcodebuild
         run: yarn detox build --configuration ios
-
-      # - name: Use specific Java version for sdkmanager to work
-      #   uses: joschi/setup-jdk@v2
-      #   with:
-      #     java-version: 'openjdk8'
-      #     architecture: 'x64'
-
-      # - name: Download Android Emulator Image
-      #   run: |
-      #     echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
-      #     echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_x86 --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
-      #     $ANDROID_HOME/emulator/emulator -list-avds
-
-      # - name: Android Emulator
-      #   timeout-minutes: 20
-      #   continue-on-error: true
-      #   run: |
-      #     echo "Starting emulator"
-      #     nohup $ANDROID_HOME/emulator/emulator -avd Pixel_3a_API_30_x86 -no-audio -no-snapshot -no-window &
-      #     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-      #     $ANDROID_HOME/platform-tools/adb devices
-      #     echo "Emulator started"
-
-      # - name: Android Detox
-      #   run: yarn detox test --configuration android || /Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk && yarn detox test --configuration android
 
       - name: Setup Detox
         run: |
           brew tap wix/brew
           brew install applesimutils
-
-      # - name: Open iOS Simulator
-      #   run: |
-      #     open -a Simulator.app
-      #     sleep 10
-
-      # - name: Run app in Simulator
-      #   run: |
-      #     xcrun simctl install booted ./e2e/bin/hotlineblingcodealong.app
-      #     sleep 15
 
       - name: Run tests
         run: yarn detox test --configuration ios
