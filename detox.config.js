@@ -7,7 +7,7 @@ module.exports = {
       type: 'ios.app',
       build:
         'eas build --platform ios --profile simulator --non-interactive --local --output=e2e/bin/hotlineblingcodealong.app',
-      binaryPath: 'e2e/bin/hotlineblingcodealong.app',
+      binaryPath: './e2e/bin/hotlineblingcodealong.app',
     },
     android: {
       type: 'android.apk',
