@@ -1,4 +1,4 @@
-name: Detox Integration Tests - iOS
+name: Detox Integration Tests - Android
 
 on: [push]
 
@@ -29,15 +29,26 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Prepare files for xcodebuild command
-        run: expo prebuild --platform ios
+        run: expo prebuild --platform android
+
+      - name: Install Java JDK
+        uses: joschi/setup-jdk@v1
+        with:
+          java-version: 'openjdk8'
+          architecture: 'x64'
+        env:
+          # https://github.com/actions/toolkit/issues/641#issuecomment-728963957
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Build iOS app locally with xcodebuild
-        run: yarn detox build --configuration ios
-
-      - name: Setup Simulator for Detox
-        run: |
-          brew tap wix/brew
-          brew install applesimutils
+        run: yarn detox build --configuration android
 
       - name: Run tests
-        run: yarn detox test --configuration ios
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: default
+          arch: x86_64
+          profile: pixel
+          avd-name: Pixel_3a_API_30
+          script: yarn detox test --configuration ios
