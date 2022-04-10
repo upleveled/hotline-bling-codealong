@@ -1,7 +1,12 @@
 module.exports = {
   testRunner: 'jest',
   runnerConfig: require.resolve('./e2e/jest.config.js'),
-  skipLegacyWorkersInjection: true,
+  specs: 'e2e',
+  behavior: {
+    init: {
+      exposeGlobals: false,
+    },
+  },
   apps: {
     ios: {
       type: 'ios.app',
@@ -53,6 +58,21 @@ module.exports = {
     android: {
       device: 'emulator',
       app: 'android',
+    },
+  },
+  artifacts: {
+    rootDir: '.artifacts',
+    plugins: {
+      log: { enabled: true },
+      uiHierarchy: 'enabled',
+      screenshot: {
+        shouldTakeAutomaticSnapshots: true,
+        keepOnlyFailedTestsArtifacts: true,
+        takeWhen: {
+          testStart: false,
+          testDone: true,
+        },
+      },
     },
   },
 };
