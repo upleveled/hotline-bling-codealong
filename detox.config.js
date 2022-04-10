@@ -1,12 +1,13 @@
 module.exports = {
   testRunner: 'jest',
   runnerConfig: require.resolve('./e2e/jest.config.js'),
-  specs: 'e2e',
-  behavior: {
-    init: {
-      exposeGlobals: false,
-    },
-  },
+  skipLegacyWorkersInjection: true,
+  // specs: 'e2e',
+  // behavior: {
+  //   init: {
+  //     exposeGlobals: false,
+  //   },
+  // },
   apps: {
     ios: {
       type: 'ios.app',
