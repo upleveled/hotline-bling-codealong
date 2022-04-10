@@ -49,3 +49,10 @@ jobs:
           profile: pixel
           avd-name: Pixel_3a_API_30
           script: yarn detox test --configuration android
+
+      # Store any Detox screenshots on test failure
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: detox-artifacts
+          path: .detoxArtifacts

@@ -61,7 +61,7 @@ module.exports = {
     },
   },
   artifacts: {
-    rootDir: '.artifacts',
+    rootDir: '.detoxArtifacts',
     plugins: {
       log: { enabled: true },
       uiHierarchy: 'enabled',
