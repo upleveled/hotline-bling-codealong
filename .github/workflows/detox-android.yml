@@ -28,7 +28,7 @@ jobs:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Prepare files for xcodebuild command
+      - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
       - name: Install Java JDK
@@ -40,7 +40,7 @@ jobs:
           # https://github.com/actions/toolkit/issues/641#issuecomment-728963957
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
-      - name: Build iOS app locally with xcodebuild
+      - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
       - name: Run tests
@@ -51,4 +51,4 @@ jobs:
           arch: x86_64
           profile: pixel
           avd-name: Pixel_3a_API_30
-          script: yarn detox test --configuration ios
+          script: yarn detox test --configuration android
