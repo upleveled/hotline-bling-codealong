@@ -43,6 +43,14 @@ jobs:
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
+      - run: ls -al android/
+      - run: ls -al android/app/
+      - run: ls -al android/app/build/
+      - run: ls -al android/app/build/outputs/
+      - run: ls -al android/app/build/outputs/apk/
+      - run: ls -al android/app/build/outputs/apk/release/
+      - run: ls -al android/app/build/outputs/apk/androidTest/
+      - run: ls -al android/app/build/outputs/apk/androidTest/release/
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
