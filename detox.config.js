@@ -1,7 +1,12 @@
 module.exports = {
   testRunner: 'jest',
   runnerConfig: require.resolve('./e2e/jest.config.js'),
-  skipLegacyWorkersInjection: true,
+  specs: 'e2e',
+  behavior: {
+    init: {
+      exposeGlobals: false,
+    },
+  },
   apps: {
     ios: {
       type: 'ios.app',
@@ -18,20 +23,22 @@ module.exports = {
       // binaryPath: './e2e/bin/hotlineblingcodealong.app',
     },
 
-    // TODO: Set up Android configuration and tests
     android: {
       type: 'android.apk',
-      // build:
-      //   'eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-test.apk',
-      // These both need to be configured for Detox to not
-      // auto-generate an incorrect, nonexistent path
-      // https://github.com/wix/Detox/issues/2274
       binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
       build:
-        'pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd',
+        // List out the path to the final APK to trigger a failure of the
+        // action step as well, in case the Gradle build fails
+        //
+        // Gradle has failed before here without causing the action step
+        // to also fail
+        'pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd; ls android/app/build/outputs/apk/release/app-release.apk',
+
+      // FIXME: As of April 2022, EAS builds (both local and cloud)
+      // do not work with Detox
+      // build:
+      //   'eas build --platform=android --profile emulator --non-interactive --local --output=e2e/bin/app-test.apk',
       // binaryPath: 'e2e/app.apk',
-      // testBinaryPath:
-      //   'e2e/89fca8e0-b364-4195-9674-13c0a4394713-bc26edcca6de40eb9c56272be54e70db.apk',
     },
   },
   devices: {
@@ -44,7 +51,7 @@ module.exports = {
     emulator: {
       type: 'android.emulator',
       device: {
-        avdName: 'Pixel_3a_API_30',
+        avdName: 'Pixel_3a_API_30_AOSP',
       },
     },
   },
@@ -56,6 +63,21 @@ module.exports = {
     android: {
       device: 'emulator',
       app: 'android',
+    },
+  },
+  artifacts: {
+    rootDir: '.detoxArtifacts',
+    plugins: {
+      log: { enabled: true },
+      uiHierarchy: 'enabled',
+      screenshot: {
+        shouldTakeAutomaticSnapshots: true,
+        keepOnlyFailedTestsArtifacts: true,
+        takeWhen: {
+          testStart: false,
+          testDone: true,
+        },
+      },
     },
   },
 };

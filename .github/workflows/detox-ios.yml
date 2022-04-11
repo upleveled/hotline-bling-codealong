@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -17,12 +17,12 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
-      # Sharp CLI enables faster image generation during build
+      # Sharp CLI enables faster image generation during prebuild
       # https://github.com/expo/expo-cli/issues/2676
-      - name: Install Sharp CLI for faster image generation during build
+      - name: Install Sharp CLI for faster image generation during prebuild
         run: yarn global add sharp-cli
 
-      - name: Setup Expo
+      - name: Set up Expo
         uses: expo/expo-github-action@v7
         with:
           expo-version: latest
@@ -34,10 +34,17 @@ jobs:
       - name: Build iOS app locally with xcodebuild
         run: yarn detox build --configuration ios
 
-      - name: Setup Detox
+      - name: Set up Simulator for Detox
         run: |
           brew tap wix/brew
           brew install applesimutils
 
       - name: Run tests
         run: yarn detox test --configuration ios
+
+      # Store any Detox screenshots on test failure
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: detox-artifacts
+          path: .detoxArtifacts

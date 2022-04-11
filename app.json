@@ -31,7 +31,7 @@
     "androidStatusBar": {
       "backgroundColor": "#000000",
       "barStyle": "light-content"
-    }
-  },
-  "plugins": ["@config-plugins/detox"]
+    },
+    "plugins": ["@config-plugins/detox"]
+  }
 }
