@@ -63,7 +63,6 @@ jobs:
           arch: x86_64
           profile: pixel
           avd-name: Pixel_3a_API_30
-          script: cd android && ./gradlew connectedCheck
 
       # Sleep for 10 seconds to avoid "System UI isn't responding" ANR (Application Not Responding) error
       # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
