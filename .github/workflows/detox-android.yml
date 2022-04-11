@@ -72,7 +72,7 @@ jobs:
       #     api-level: 30
       #     arch: x86
       #     channel: canary
-      #     profile: pixel_3
+      #     profile: pixel
       #     avd-name: Pixel_3a_API_30_AOSP
       #     force-avd-creation: false
       #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
@@ -86,14 +86,14 @@ jobs:
       #     api-level: 30
       #     arch: x86_64
       #     channel: canary
-      #     profile: pixel_3
+      #     profile: pixel
       #     avd-name: Pixel_3a_API_30_AOSP
       #     script: yarn detox test --configuration android
 
       - name: Download Android Emulator Image
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-30;default;x86_64"
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_AOSP --device pixel_3 --package 'system-images;android-30;default;x86_64'
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_AOSP --device pixel --package 'system-images;android-30;default;x86_64'
           $ANDROID_HOME/emulator/emulator -list-avds
 
       - name: Start Android Emulator
