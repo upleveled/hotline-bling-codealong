@@ -55,56 +55,56 @@ jobs:
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
-      # - name: Cache AVD snapshot
-      #   uses: actions/cache@v3
-      #   id: avd-cache
-      #   with:
-      #     path: |
-      #       ~/.android/avd/*
-      #       ~/.android/adb*
-      #     key: avd-30
-      #
-      # - name: Create AVD and generate snapshot for caching
-      #   if: steps.avd-cache.outputs.cache-hit != 'true'
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     target: aosp_atd
-      #     api-level: 30
-      #     arch: x86
-      #     channel: canary
-      #     profile: pixel_3a
-      #     avd-name: Pixel_3a_API_30_AOSP
-      #     force-avd-creation: false
-      #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-      #     disable-animations: false
-      #     script: echo "Generated AVD snapshot for caching"
-      #
-      # - name: Start emulator
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     target: aosp_atd
-      #     api-level: 30
-      #     arch: x86_64
-      #     channel: canary
-      #     profile: pixel_3a
-      #     avd-name: Pixel_3a_API_30_AOSP
-      #     script: yarn detox test --configuration android
+      - name: Cache AVD snapshot
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-30
 
-      - name: Download Android Emulator Image
-        run: |
-          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-30;default;x86_64"
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_AOSP --device pixel_3a --package 'system-images;android-30;default;x86_64'
-          $ANDROID_HOME/emulator/emulator -list-avds
+      - name: Create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          target: aosp-atd
+          api-level: 30
+          arch: x86
+          channel: canary
+          profile: pixel_3a
+          avd-name: Pixel_3a_API_30_AOSP
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching"
 
-      - name: Start Android Emulator
-        timeout-minutes: 10
-        continue-on-error: true
-        run: |
-          echo "Starting emulator"
-          nohup $ANDROID_HOME/emulator/emulator -avd Pixel_3a_API_30_AOSP -no-audio -no-snapshot -no-window &
-          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-          $ANDROID_HOME/platform-tools/adb devices
-          echo "Emulator started"
+      - name: Start emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          target: aosp-atd
+          api-level: 30
+          arch: x86_64
+          channel: canary
+          profile: pixel_3a
+          avd-name: Pixel_3a_API_30_AOSP
+          script: yarn detox test --configuration android
+
+      # - name: Download Android Emulator Image
+      #   run: |
+      #     echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-30;default;x86_64"
+      #     echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_AOSP --device pixel_3a --package 'system-images;android-30;default;x86_64'
+      #     $ANDROID_HOME/emulator/emulator -list-avds
+
+      # - name: Start Android Emulator
+      #   timeout-minutes: 10
+      #   continue-on-error: true
+      #   run: |
+      #     echo "Starting emulator"
+      #     nohup $ANDROID_HOME/emulator/emulator -avd Pixel_3a_API_30_AOSP -no-audio -no-snapshot -no-window &
+      #     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+      #     $ANDROID_HOME/platform-tools/adb devices
+      #     echo "Emulator started"
 
       - name: Run Detox integration tests
         run: yarn detox test --configuration android
