@@ -55,7 +55,17 @@ jobs:
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
-      - name: Start emulator
+      - name: Cache AVD snapshot
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-30
+
+      - name: Create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -63,7 +73,10 @@ jobs:
           arch: x86_64
           profile: pixel
           avd-name: Pixel_3a_API_30
-          script: sleep 1
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching"
 
       # Is it flaky? test 3
       - name: Run Detox integration tests
