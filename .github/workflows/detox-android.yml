@@ -64,7 +64,7 @@ jobs:
           profile: pixel
           avd-name: Pixel_3a_API_30
 
-      # Is it flaky? test 2
+      # Is it flaky? test 3
       - name: Run Detox integration tests
         # Sleep for 10 seconds and retry tests to
         # work around "System UI isn't responding" ANR
