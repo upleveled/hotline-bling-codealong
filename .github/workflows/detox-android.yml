@@ -70,6 +70,13 @@ jobs:
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
+          # Use the slimmer aosp_atd images for working
+          # around "System UI isn't responding" ANR
+          # (Application Not Responding) error
+          #
+          # https://android-developers.googleblog.com/2021/10/whats-new-in-scalable-automated-testing.html#:~:text=Slimmer%20Emulator%20System%20Images
+          # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
+          # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
           target: aosp_atd
           api-level: 30
           arch: x86
