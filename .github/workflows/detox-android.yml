@@ -106,8 +106,8 @@ jobs:
       #     $ANDROID_HOME/platform-tools/adb devices
       #     echo "Emulator started"
 
-      - name: Run Detox integration tests
-        run: yarn detox test --configuration android
+      # - name: Run Detox integration tests
+      #   run: yarn detox test --configuration android
 
       - name: Store Detox artifacts on test failure
         uses: actions/upload-artifact@v3
