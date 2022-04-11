@@ -63,29 +63,31 @@ jobs:
       #       ~/.android/avd/*
       #       ~/.android/adb*
       #     key: avd-30
-      #
+
       # - name: Create AVD and generate snapshot for caching
       #   if: steps.avd-cache.outputs.cache-hit != 'true'
       #   uses: reactivecircus/android-emulator-runner@v2
       #   with:
+      #     target: aosp_atd
       #     api-level: 30
-      #     target: default
-      #     arch: x86_64
-      #     profile: pixel
-      #     avd-name: Pixel_3a_API_30
+      #     arch: x86
+      #     channel: canary
+      #     profile: pixel_3a
+      #     avd-name: Pixel_3a_API_30_AOSP
       #     force-avd-creation: false
       #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
       #     disable-animations: false
       #     script: echo "Generated AVD snapshot for caching"
-      #
+
       # - name: Start emulator
       #   uses: reactivecircus/android-emulator-runner@v2
       #   with:
+      #     target: aosp_atd
       #     api-level: 30
-      #     target: default
       #     arch: x86_64
-      #     profile: pixel
-      #     avd-name: Pixel_3a_API_30
+      #     channel: canary
+      #     profile: pixel_3a
+      #     avd-name: Pixel_3a_API_30_AOSP
       #     # Sleep for 10 seconds and retry tests to
       #     # work around "System UI isn't responding" ANR
       #     # (Application Not Responding) error
