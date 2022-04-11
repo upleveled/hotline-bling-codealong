@@ -71,7 +71,7 @@ jobs:
       - name: Avoid System UI isn't responding error
         run: sleep 10
 
-      # Is it flaky? test 3
+      # Is it flaky? test 2
       - name: Run Detox integration tests
         run: yarn detox test --configuration android
 
