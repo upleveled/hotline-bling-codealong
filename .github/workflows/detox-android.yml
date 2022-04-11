@@ -39,6 +39,11 @@ jobs:
       #
       # https://github.com/gradle/gradle/issues/15536
       # https://github.com/gradle/gradle/issues/19372
+      #
+      # Apparently Gradle has been updated to 7.3.3
+      # since Expo is supporting React Native 0.68
+      #
+      # https://github.com/expo/expo/commit/d566f199bdb03f738c8a785283e847b6a00ec37a
       - run: sed -i'' -e 's/gradle-6.9-all.zip/gradle-6.9.2-all.zip/g' android/gradle/wrapper/gradle-wrapper.properties
 
       - name: Install Java JDK
