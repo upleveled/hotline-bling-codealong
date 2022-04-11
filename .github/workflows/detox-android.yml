@@ -95,7 +95,7 @@ jobs:
       #     echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-30;aosp_atd;x86"
       #     echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30_AOSP --device pixel --package 'system-images;android-30;aosp_atd;x86'
       #     $ANDROID_HOME/emulator/emulator -list-avds
-
+      #
       # - name: Start Android Emulator
       #   timeout-minutes: 10
       #   continue-on-error: true
