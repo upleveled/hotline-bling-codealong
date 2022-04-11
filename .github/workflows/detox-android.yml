@@ -31,6 +31,16 @@ jobs:
       - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
+      # Bug in gradle 6.9 causing following error:
+      #
+      # com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives:
+      # > Task :app:mergeExtDexRelease FAILED
+      # Type androidx.appcompat.app.ActionBar$DisplayOptions is defined multiple times
+      #
+      # https://github.com/gradle/gradle/issues/15536
+      # https://github.com/gradle/gradle/issues/19372
+      - run: sed -i'' -e 's/gradle-6.9-all.zip/gradle-6.9.2-all.zip/g' android/gradle/wrapper/gradle-wrapper.properties
+
       - name: Install Java JDK
         uses: actions/setup-java@v3
         with:
