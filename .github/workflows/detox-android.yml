@@ -65,6 +65,7 @@ jobs:
           avd-name: Pixel_3a_API_30
           script: cd android && ./gradlew connectedCheck
 
+      # Is it flaky? test 1
       - name: Run Detox integration tests
         run: yarn detox test --configuration android
 
