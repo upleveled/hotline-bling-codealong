@@ -27,7 +27,7 @@ module.exports = {
       type: 'android.apk',
       binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
       build:
-        'pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd',
+        'pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd; ls android/app/build/outputs/apk/release/app-release.apk',
 
       // FIXME: As of April 2022, EAS builds (both local and cloud)
       // do not work with Detox
