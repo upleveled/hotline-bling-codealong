@@ -63,6 +63,11 @@ jobs:
           arch: x86_64
           profile: pixel
           avd-name: Pixel_3a_API_30
+          # Sleep for 10 seconds and retry tests to
+          # work around "System UI isn't responding" ANR
+          # (Application Not Responding) error
+          # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
+          # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
           script: yarn detox test --configuration android || (sleep 10 && yarn detox test --configuration android)
 
       # Store any Detox screenshots on test failure
