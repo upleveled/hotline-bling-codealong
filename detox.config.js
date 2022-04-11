@@ -27,6 +27,11 @@ module.exports = {
       type: 'android.apk',
       binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
       build:
+        // List out the path to the final APK to trigger a failure of the
+        // action step as well, in case the Gradle build fails
+        //
+        // Gradle has failed before here without causing the action step
+        // to also fail
         'pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd; ls android/app/build/outputs/apk/release/app-release.apk',
 
       // FIXME: As of April 2022, EAS builds (both local and cloud)
