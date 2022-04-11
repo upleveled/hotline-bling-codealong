@@ -63,6 +63,7 @@ jobs:
           arch: x86_64
           profile: pixel
           avd-name: Pixel_3a_API_30
+          script: sleep 1
 
       # Is it flaky? test 1
       - name: Run Detox integration tests
