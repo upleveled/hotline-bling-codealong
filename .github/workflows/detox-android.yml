@@ -55,18 +55,18 @@ jobs:
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
-      - name: Run tests
+      - name: Start emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          # Use API 29 to avoid "System UI isn't responding" ANR (Application Not Responding) error
-          # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
-          # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
-          api-level: 29
+          api-level: 30
           target: default
           arch: x86_64
           profile: pixel
-          avd-name: Pixel_3a_API_29
-          script: yarn detox test --configuration android
+          avd-name: Pixel_3a_API_30
+          script: cd android && ./gradlew connectedCheck
+
+      - name: Run Detox integration tests
+        run: yarn detox test --configuration android
 
       # Store any Detox screenshots on test failure
       - uses: actions/upload-artifact@v3
