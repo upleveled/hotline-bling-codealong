@@ -97,7 +97,7 @@ jobs:
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64"
           $ANDROID_HOME/tools/bin/sdkmanager --list_installed
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30 -k 'system-images;android-30;google_apis;x86_64'
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name Pixel_3a_API_30 --device pixel_3a -k 'system-images;android-30;google_apis;x86_64'
           $ANDROID_HOME/emulator/emulator -list-avds
 
       - name: Start Android Emulator
