@@ -31,7 +31,7 @@ jobs:
       - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
-      # Bug in gradle 6.9 causing following error:
+      # Bug in Gradle 6.9 causing following error:
       #
       # com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives:
       # > Task :app:mergeExtDexRelease FAILED
