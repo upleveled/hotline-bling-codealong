@@ -18,6 +18,7 @@ describe('Example', () => {
       // https://github.com/ReactiveCircus/android-emulator-runner/issues/129
       // https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
       .withTimeout(30000);
+
     await expect(element(by.id('HeaderView'))).toBeVisible();
   });
 });
