@@ -55,43 +55,62 @@ jobs:
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
-      - name: Cache AVD snapshot
-        uses: actions/cache@v3
-        id: avd-cache
-        with:
-          path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-30
+      # - name: Cache AVD snapshot
+      #   uses: actions/cache@v3
+      #   id: avd-cache
+      #   with:
+      #     path: |
+      #       ~/.android/avd/*
+      #       ~/.android/adb*
+      #     key: avd-30
 
-      - name: Create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: default
-          arch: x86_64
-          profile: pixel
-          avd-name: Pixel_3a_API_30
-          force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
-          script: echo "Generated AVD snapshot for caching"
+      # - name: Create AVD and generate snapshot for caching
+      #   if: steps.avd-cache.outputs.cache-hit != 'true'
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 30
+      #     target: default
+      #     arch: x86_64
+      #     profile: pixel
+      #     avd-name: Pixel_3a_API_30
+      #     force-avd-creation: false
+      #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+      #     disable-animations: false
+      #     script: echo "Generated AVD snapshot for caching"
 
-      - name: Start emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: default
-          arch: x86_64
-          profile: pixel
-          avd-name: Pixel_3a_API_30
-          # Sleep for 10 seconds and retry tests to
-          # work around "System UI isn't responding" ANR
-          # (Application Not Responding) error
-          # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
-          # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
-          script: yarn detox test --configuration android || (sleep 10 && yarn detox test --configuration android)
+      # - name: Start emulator
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 30
+      #     target: default
+      #     arch: x86_64
+      #     profile: pixel
+      #     avd-name: Pixel_3a_API_30
+      #     # Sleep for 10 seconds and retry tests to
+      #     # work around "System UI isn't responding" ANR
+      #     # (Application Not Responding) error
+      #     # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
+      #     # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
+      #     script: yarn detox test --configuration android || (sleep 10 && yarn detox test --configuration android)
+
+      - name: Download Android Emulator Image
+        run: |
+          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name emu --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
+          $ANDROID_HOME/emulator/emulator -list-avds
+
+      - name: Android Emulator
+        timeout-minutes: 10
+        continue-on-error: true
+        run: |
+          echo "Starting emulator"
+          nohup $ANDROID_HOME/emulator/emulator -avd emu -no-audio -no-snapshot -no-window &
+          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+          $ANDROID_HOME/platform-tools/adb devices
+          echo "Emulator started"
+
+      - name: Run Detox integration tests
+        run: yarn detox test --configuration android
 
       # Store any Detox screenshots on test failure
       - uses: actions/upload-artifact@v3
