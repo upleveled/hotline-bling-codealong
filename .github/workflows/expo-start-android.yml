@@ -18,9 +18,6 @@ jobs:
       - name: Install newer Bash
         run: |
           brew install bash
-          bash --version
-          echo "/usr/local/bin" >> $GITHUB_PATH
-          bash --version
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
