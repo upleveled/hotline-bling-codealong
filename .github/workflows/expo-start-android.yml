@@ -10,16 +10,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install newer Bash and coreutils (for timeout)
+        run: |
+          brew install bash coreutils
+
       - run: /bin/sh -c ./scripts/test-expo-dev-server.sh
-
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: '16'
-
-      # - name: Install newer Bash and coreutils (for timeout)
-      #   run: |
-      #     brew install bash coreutils
 
       # - name: Install deps and build (with cache)
       #   uses: bahmutov/npm-install@v1
