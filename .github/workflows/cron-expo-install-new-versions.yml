@@ -44,3 +44,4 @@ jobs:
           branch: 'expo-upgrade-packages'
           title: 'Upgrade packages to versions with Expo SDK support'
           commit-message: 'Upgrade packages to versions with Expo SDK support'
+          body: 'Automated upgrade of packages to versions that are supported by current version of Expo SDK'
