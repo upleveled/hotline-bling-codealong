@@ -19,10 +19,11 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Set up Expo
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: latest
+      - name: Install Expo CLI
+        run: npm install --global expo-cli
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
 
       - name: Upgrade packages to latest version supported by Expo SDK
         run: echo y | expo upgrade
