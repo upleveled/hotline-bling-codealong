@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+ps -p $$
+echo starting
+
 #  Run Expo dev server, redirecting stdout + stderr to log file
 yarn start --android > expo-start.log 2>&1 &
 expo_start_pid=$!
@@ -10,11 +13,15 @@ expo_start_pid=$!
 { timeout 120 grep -m 1 "Android Bundling complete" <(tail -f expo-start.log) && echo "Expo dev server start succeeded"; } &
 { timeout 120 grep -m 1 "Android Bundling failed" <(tail -f expo-start.log) && echo "Expo dev server start failed" && cat expo-start.log && exit 1; } &
 
+echo waiting
+
 # Wait for the first process to finish, and if
 # it was the Expo dev server process, continue
 # waiting for the next process to finish
 wait -n
 [ $! -eq $expo_start_pid ] && wait -n
+
+echo after wait
 
 # Get the exit code of the process, kill the
 # remaining processes, and exit with the
