@@ -8,6 +8,7 @@ touch expo-start.log
 expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
 
+# Also show logs in terminal
 tail -f expo-start.log &
 tail_pid=$!
 
@@ -21,8 +22,9 @@ tail_pid=$!
 echo waiting
 
 # Wait for the first process to finish, and if
-# it was the Expo dev server process, continue
-# waiting for the next process to finish
+# it was the Expo dev server process or the tail
+# process, continue waiting for the next process
+# to finish
 wait -n
 ([ $! -eq $expo_start_pid ] || [ $! -eq $tail_pid ]) && wait -n
 ([ $! -eq $expo_start_pid ] || [ $! -eq $tail_pid ]) && wait -n
