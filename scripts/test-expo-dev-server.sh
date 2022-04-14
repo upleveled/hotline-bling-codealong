@@ -16,7 +16,7 @@ tail_pid=$!
 # Race processes to locate success + failure messages in dev server output
 # Ref: https://superuser.com/a/1074656/157255
 # Ref: https://unix.stackexchange.com/a/231678/86691
-{ timeout 240 grep -m 1 "Android Bundling complete" <(tail -f expo-start.log) && echo "Expo dev server start succeeded"; } &
+{ timeout 250 grep -m 1 "Android Bundling complete" <(tail -f expo-start.log) && echo "Expo dev server start succeeded"; } &
 { timeout 240 grep -m 1 "Android Bundling failed" <(tail -f expo-start.log) && echo "Expo dev server start failed" || echo "Timeout reached" && (cat expo-start.log && exit 1); } &
 
 
