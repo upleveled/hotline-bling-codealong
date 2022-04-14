@@ -9,7 +9,10 @@ yarn start --android > expo-start.log 2>&1 &
 { timeout 120 grep -m 1 "Android Bundling complete" <(tail -f expo-start.log); } &
 { timeout 120 grep -m 1 "Android Bundling failed" <(tail -f expo-start.log) && cat expo-start.log && exit 1; } &
 
-# Wait for the first job to complete
+# Wait for the server start to finish
+wait -n
+
+# Wait for the first grep job to complete
 # and then kill the remaining job
 wait -n
 exit_code=$?
