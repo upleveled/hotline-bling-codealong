@@ -4,7 +4,7 @@ ps -p $$
 echo starting
 
 # Run Expo dev server, redirecting stdout + stderr to log file
-yarn start --android > expo-start.log 2>&1 &
+expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
 ps -ef
 
