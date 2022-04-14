@@ -26,10 +26,8 @@ echo waiting
 # it was the Expo dev server process, continue
 # waiting for the next process to finish
 wait -n
-waited_pid=$!
-[ $! -eq $expo_start_pid || $! -eq $tail_pid ] && wait -n
-[ $! -eq $expo_start_pid || $! -eq $tail_pid ] && wait -n
-waited_pid_2=$!
+([ $! -eq $expo_start_pid ] || [ $! -eq $tail_pid ]) && wait -n
+([ $! -eq $expo_start_pid ] || [ $! -eq $tail_pid ]) && wait -n
 
 # Get the exit code of the process, kill the
 # remaining processes, and exit with the
