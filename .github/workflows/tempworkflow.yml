@@ -12,10 +12,13 @@ jobs:
           brew install bash coreutils
       - run: |
           touch expo-start.log
+          tail -f expo-start.log &
           { timeout 120 grep -m 1 "Android Bundling complete" <(tail -f expo-start.log) && echo "Expo dev server start succeeded"; } &
           { timeout 120 grep -m 1 "Android Bundling failed" <(tail -f expo-start.log) && echo "Expo dev server start failed" && cat expo-start.log && exit 1; } &
           # { timeout 120 sleep 1 && echo 1st && sleep 20 && echo 'long end'; } &
           # { timeout 120 sleep 3 && echo second && exit 1; } &
+          echo 'log' >> expo-start.log
+          echo 'Android Bundling complete' >> expo-start.log
           wait -n
           exit_code=$?
           pkill -P $$
