@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
 ps -p $$
-echo starting
 
 touch expo-start.log
 
 # Run Expo dev server, redirecting stdout + stderr to log file
 expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
-echo "expo start pid: $expo_start_pid"
 
 tail -f expo-start.log &
 tail_pid=$!
@@ -33,13 +31,5 @@ wait -n
 # remaining processes, and exit with the
 # same exit code
 exit_code=$?
-echo "exit code: $exit_code"
-echo "waited pid: $waited_pid"
-echo "waited pid 2: $waited_pid_2"
-
-
-cat expo-start.log
-
 pkill -P $$
-echo after wait
 exit $exit_code
