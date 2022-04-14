@@ -7,7 +7,7 @@
     },
     {
       // Allow updating these packages, since they are
-      // not restricted by the Expo SDK version
+      // not managed / restricted by Expo SDK version
       // https://github.com/renovatebot/config-help/issues/86#issuecomment-415815759
       packageNames: [
         '@config-plugins/detox',
@@ -15,8 +15,10 @@
         '@react-native-community/masked-view',
         '@react-navigation/native',
         '@react-navigation/native-stack',
-        'jest-circus',
         'detox',
+        // Jest is managed by Expo SDK version, but
+        // we want the latest version to keep tests stable
+        'jest',
       ],
       enabled: true,
     },
