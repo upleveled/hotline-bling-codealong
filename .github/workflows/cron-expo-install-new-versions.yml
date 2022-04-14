@@ -1,0 +1,30 @@
+name: Upgrade Expo packages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 18:00 on Thursday, similar to how Renovate is configured:
+    # https://github.com/karlhorky/renovate-config
+    - cron: '0 18 * * 4'
+
+jobs:
+  build:
+    name: Upgrade Expo packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Upgrade packages to latest version supported by Expo SDK
+        run: echo y | expo upgrade
+
+      - name: Commit and create PR
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: 'expo-upgrade-packages'
+          title: 'Upgrade packages to versions with Expo SDK support'
+          commit-message: 'Upgrade packages to versions with Expo SDK support'
