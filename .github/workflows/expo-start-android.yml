@@ -19,55 +19,53 @@ jobs:
         run: |
           brew install bash coreutils
 
-      - run: /bin/sh -c ./scripts/test-expo-dev-server.sh
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
 
-      # - name: Install deps and build (with cache)
-      #   uses: bahmutov/npm-install@v1
+      - name: Set up Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      # - name: Set up Expo
-      #   uses: expo/expo-github-action@v7
-      #   with:
-      #     expo-version: latest
-      #     token: ${{ secrets.EXPO_TOKEN }}
+      - name: Cache AVD snapshot
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-30-aosp-atd
 
-      # - name: Cache AVD snapshot
-      #   uses: actions/cache@v3
-      #   id: avd-cache
-      #   with:
-      #     path: |
-      #       ~/.android/avd/*
-      #       ~/.android/adb*
-      #     key: avd-30-aosp-atd
+      - name: Create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          # Use the slimmer aosp_atd images for working
+          # around "System UI isn't responding" ANR
+          # (Application Not Responding) error
+          #
+          # https://android-developers.googleblog.com/2021/10/whats-new-in-scalable-automated-testing.html#:~:text=Slimmer%20Emulator%20System%20Images
+          # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
+          # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
+          target: aosp_atd
+          api-level: 30
+          arch: x86
+          channel: canary
+          profile: pixel
+          avd-name: Pixel_3a_API_30_AOSP
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching"
 
-      # - name: Create AVD and generate snapshot for caching
-      #   if: steps.avd-cache.outputs.cache-hit != 'true'
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     # Use the slimmer aosp_atd images for working
-      #     # around "System UI isn't responding" ANR
-      #     # (Application Not Responding) error
-      #     #
-      #     # https://android-developers.googleblog.com/2021/10/whats-new-in-scalable-automated-testing.html#:~:text=Slimmer%20Emulator%20System%20Images
-      #     # https://github.com/ReactiveCircus/android-emulator-runner/issues/129
-      #     # https://github.com/upleveled/hotline-bling-codealong/pull/26#issuecomment-1094659722
-      #     target: aosp_atd
-      #     api-level: 30
-      #     arch: x86
-      #     channel: canary
-      #     profile: pixel
-      #     avd-name: Pixel_3a_API_30_AOSP
-      #     force-avd-creation: false
-      #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-      #     disable-animations: false
-      #     script: echo "Generated AVD snapshot for caching"
-
-      # - name: Start emulator and run Expo dev server
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     target: aosp_atd
-      #     api-level: 30
-      #     arch: x86
-      #     channel: canary
-      #     profile: pixel
-      #     avd-name: Pixel_3a_API_30_AOSP
-      #     script: ./scripts/test-expo-dev-server.sh
+      - name: Start emulator and run Expo dev server
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          target: aosp_atd
+          api-level: 30
+          arch: x86
+          channel: canary
+          profile: pixel
+          avd-name: Pixel_3a_API_30_AOSP
+          script: ./scripts/test-expo-dev-server.sh
