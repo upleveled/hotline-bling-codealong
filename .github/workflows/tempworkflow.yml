@@ -11,8 +11,8 @@ jobs:
         run: |
           brew install bash coreutils
       - run: |
-          { sleep 1 && echo 1st && sleep 20 && echo 'long end'; } &
-          { sleep 3 && echo second && exit 1; } &
+          { timeout 120 sleep 1 && echo 1st && sleep 20 && echo 'long end'; } &
+          { timeout 120 sleep 3 && echo second && exit 1; } &
           wait -n
           exit_code=$?
           pkill -P $$
