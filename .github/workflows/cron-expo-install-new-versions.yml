@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Install Expo CLI
+        run: npm install --global expo-cli
+
       - name: Upgrade packages to latest version supported by Expo SDK
         run: echo y | expo upgrade
 
