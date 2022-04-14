@@ -66,11 +66,11 @@ jobs:
           avd-name: Pixel_3a_API_30_AOSP
           script: yarn detox test --configuration android
 
-      - name: Run Expo dev server + redirect stdout and stderr to log file
+      - name: Run Expo dev server, redirect stdout + stderr to log file
         run: |
           yarn start --android > expo-start.log 2>&1 &
 
-      - name: Race jobs to look for success and error messages in
+      - name: Race jobs to locate success + error messages in dev server output
         # Ref: https://superuser.com/a/1074656/157255
         # Ref: https://unix.stackexchange.com/a/231678/86691
         run: |
