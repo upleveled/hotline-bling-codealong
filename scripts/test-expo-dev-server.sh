@@ -30,5 +30,6 @@ wait -n
 # remaining processes, and exit with the
 # same exit code
 exit_code=$?
+echo "Exiting with exit code $exit_code"
 pkill -P $$
 exit $exit_code
