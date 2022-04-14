@@ -61,6 +61,7 @@ jobs:
 
       - name: Start emulator and run Expo dev server
         uses: reactivecircus/android-emulator-runner@v2
+        timeout-minutes: 15
         with:
           target: aosp_atd
           api-level: 30
