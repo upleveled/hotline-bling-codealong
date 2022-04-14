@@ -36,7 +36,7 @@ jobs:
       # Jest is managed by Expo SDK version, but we
       # want the latest version to keep tests stable
       - name: Upgrade exceptions to managed Expo SDK versions
-        run: yarn upgrade --latest jest
+        run: yarn add jest --dev --exact
 
       - name: Commit and create PR
         uses: peter-evans/create-pull-request@v4
