@@ -68,6 +68,4 @@ jobs:
           channel: canary
           profile: pixel
           avd-name: Pixel_3a_API_30_AOSP
-          script: |
-            bash --version
-            bash ./scripts/test-expo-dev-server.sh
+          script: ./scripts/test-expo-dev-server.sh
