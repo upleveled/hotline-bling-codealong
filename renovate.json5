@@ -1,0 +1,24 @@
+{
+  extends: ['github>karlhorky/renovate-config'],
+  packageRules: [
+    {
+      packagePatterns: ['*'],
+      enabled: false,
+    },
+    {
+      // Allow updating these packages, since they are
+      // not restricted by the Expo SDK version
+      // https://github.com/renovatebot/config-help/issues/86#issuecomment-415815759
+      packageNames: [
+        '@config-plugins/detox',
+        '@expo/xcpretty',
+        '@react-native-community/masked-view',
+        '@react-navigation/native',
+        '@react-navigation/native-stack',
+        'jest-circus',
+        'detox',
+      ],
+      enabled: true,
+    },
+  ],
+}
