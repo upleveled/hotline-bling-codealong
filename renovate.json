@@ -1,0 +1,21 @@
+{
+  "extends": ["github>karlhorky/renovate-config"],
+  "packageRules": [
+    {
+      "packagePatterns": ["*"],
+      "enabled": false
+    },
+    {
+      "packageNames": [
+        "@config-plugins/detox",
+        "@expo/xcpretty",
+        "@react-native-community/masked-view",
+        "@react-navigation/native",
+        "@react-navigation/native-stack",
+        "jest-circus",
+        "detox"
+      ],
+      "enabled": true
+    }
+  ]
+}
