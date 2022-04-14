@@ -21,11 +21,11 @@ echo waiting
 wait -n
 [ $! -eq $expo_start_pid ] && wait -n
 
-echo after wait
 
 # Get the exit code of the process, kill the
 # remaining processes, and exit with the
 # same exit code
 exit_code=$?
 pkill -P $$
+echo after wait
 exit $exit_code
