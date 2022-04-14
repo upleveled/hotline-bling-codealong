@@ -12,4 +12,6 @@ yarn start --android > expo-start.log 2>&1 &
 # Wait for the first job to complete
 # and then kill the remaining job
 wait -n
+exit_code=$?
 pkill -P $$
+exit $exit_code
