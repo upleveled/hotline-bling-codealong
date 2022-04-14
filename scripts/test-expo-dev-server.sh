@@ -10,6 +10,9 @@ expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
 echo "expo start pid: $expo_start_pid"
 
+tail -f expo-start.log &
+tail_pid=$!
+
 # Race processes to locate success + failure messages in dev server output
 # Ref: https://superuser.com/a/1074656/157255
 # Ref: https://unix.stackexchange.com/a/231678/86691
@@ -24,7 +27,8 @@ echo waiting
 # waiting for the next process to finish
 wait -n
 waited_pid=$!
-[ $! -eq $expo_start_pid ] && wait -n
+[ $! -eq $expo_start_pid || $! -eq $tail_pid ] && wait -n
+[ $! -eq $expo_start_pid || $! -eq $tail_pid ] && wait -n
 waited_pid_2=$!
 
 # Get the exit code of the process, kill the
