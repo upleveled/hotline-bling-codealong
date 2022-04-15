@@ -16,21 +16,17 @@ exit_code=0
 do
   echo "${LOGLINE}"
 
-  if [[ "${LOGLINE}" == *"Android Bundling complete"* || "${LOGLINE}" == *"Android Bundling failed"* ]]
+  if [[ "${LOGLINE}" == *"Android Bundling complete"* ]]
   then
-    if [[ "${LOGLINE}" == *"Android Bundling complete"* ]]
-    then
-      echo "Expo dev server start succeeded"
-    elif [[ "${LOGLINE}" == *"Android Bundling failed"* ]]
-    then
-      echo "Expo dev server start failed"
-      exit_code=1
-    fi
-
+    echo "Expo dev server start succeeded"
+    break
+  elif [[ "${LOGLINE}" == *"Android Bundling failed"* ]]
+  then
+    echo "Expo dev server start failed"
+    exit_code=1
     break
   fi
 done
 
-exit_code=$?
 kill ${expo_start_pid}
 exit ${exit_code}
