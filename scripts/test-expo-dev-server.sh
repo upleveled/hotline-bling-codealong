@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
 
-ps -p $$
-
 touch expo-start.log
 
 # Run Expo dev server, redirecting stdout + stderr to log file
 expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
 
-# Also show logs in terminal
-tail -f expo-start.log &
-tail_pid=$!
+# # Also show logs in terminal
+# tail -f expo-start.log &
+# tail_pid=$!
 
 # trap "kill $tail_pid && kill $expo_start_pid" SIGINT SIGTERM EXIT
+exit_code=0
 
-timeout 360 tail -f expo-start.log | while read LOGLINE
+# Ref: https://superuser.com/a/449307/157255
+
+{ timeout 360 tail -f expo-start.log || echo "Timed out waiting for Expo dev server start (after 360 seconds)"; } | while read LOGLINE
 do
+  echo "${LOGLINE}"
+
   if [[ "${LOGLINE}" == *"Android Bundling complete"* || "${LOGLINE}" == *"Android Bundling failed"* ]]
   then
-    exit_code=0
-
     if [[ "${LOGLINE}" == *"Android Bundling complete"* ]]
     then
       echo "Expo dev server start succeeded"
@@ -29,12 +30,13 @@ do
       exit_code=1
     fi
 
-    kill ${tail_pid}
-    kill ${expo_start_pid}
-    exit ${exit_code}
+    break
   fi
-done || ([ $? -eq 124 ] && echo "Timed out waiting for Expo dev server start (after 360 seconds)")
+done
 
+exit_code=$?
+kill ${expo_start_pid}
+exit ${exit_code}
 
 # Race processes to locate success + failure messages in dev server output
 # Ref: https://superuser.com/a/1074656/157255
