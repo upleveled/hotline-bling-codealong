@@ -6,8 +6,6 @@ touch expo-start.log
 expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
 
-exit_code=0
-
 # Loop over every line added to log file, exiting if
 # matching strings indicating a successful or failed
 # server start are found
@@ -19,14 +17,11 @@ do
   if [[ "${LOGLINE}" == *"Android Bundling complete"* ]]
   then
     echo "Expo dev server start succeeded"
-    break
+    kill ${expo_start_pid}
   elif [[ "${LOGLINE}" == *"Android Bundling failed"* ]]
   then
     echo "Expo dev server start failed"
-    exit_code=1
-    break
+    kill ${expo_start_pid}
+    exit 1
   fi
 done
-
-kill ${expo_start_pid}
-exit ${exit_code}
