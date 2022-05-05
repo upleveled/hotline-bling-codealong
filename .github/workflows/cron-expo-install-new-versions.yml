@@ -30,13 +30,17 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
+      - name: Save existing Jest version to restore later
+        id: check-jest-version
+        run: echo "::set-output name=version::$(yq '.devDependencies.jest' package.json)"
+
       - name: Upgrade packages to latest version supported by Expo SDK
         run: expo upgrade
 
       # Jest is managed by Expo SDK version, but we
-      # want the latest version to keep tests stable
-      - name: Upgrade exceptions to managed Expo SDK versions
-        run: yarn add jest --dev --exact
+      # want to manage the version to keep tests stable
+      - name: Restore versions to some managed Expo SDK packages which we manage
+        run: yarn add jest@${{ steps.check-jest-version.outputs.version }} --dev --exact
 
       - name: Commit and create PR
         uses: peter-evans/create-pull-request@v4
