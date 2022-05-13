@@ -1,4 +1,5 @@
 import * as detox from 'detox';
+
 const { by, device, element, expect } = detox;
 
 describe('App', () => {
