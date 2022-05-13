@@ -1,6 +1,4 @@
-import * as detox from 'detox';
-
-const { by, device, element, expect } = detox;
+import { by, device, element, expect } from 'detox';
 
 describe('App', () => {
   beforeAll(async () => {

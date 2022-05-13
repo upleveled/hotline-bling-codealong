@@ -1,8 +1,10 @@
 module.exports = {
   testEnvironment: require.resolve('./environment.js'),
-  transform: {},
   testTimeout: 120000,
-  testRegex: '\\.e2e\\.mjs$',
+  testRegex: '\\.e2e\\.ts$',
+  transform: {
+    '\\.tsx?$': 'ts-jest',
+  },
   reporters: [require.resolve('detox/runners/jest/streamlineReporter')],
   verbose: true,
 };
