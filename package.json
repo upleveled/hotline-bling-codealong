@@ -34,6 +34,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "detox": "19.6.9",
-    "jest": "27.5.1"
+    "jest": "28.1.0"
   }
 }
