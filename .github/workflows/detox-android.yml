@@ -98,7 +98,7 @@ jobs:
           channel: canary
           profile: pixel
           avd-name: Pixel_3a_API_30_AOSP
-          script: yarn detox test --configuration android
+          script: NODE_OPTIONS=--experimental-vm-modules yarn detox test --configuration android
 
       - name: Store Detox artifacts on test failure
         uses: actions/upload-artifact@v3
