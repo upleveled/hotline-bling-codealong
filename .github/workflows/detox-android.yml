@@ -32,11 +32,16 @@ jobs:
       - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
+      # - name: Install Java JDK
+      #   uses: actions/setup-java@v3
+      #   with:
+      #     distribution: 'temurin'
+      #     java-version: '11'
+
       - name: Install Java JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '11'
+        run: |
+          brew tap homebrew/cask-versions
+          brew install --cask zulu11
 
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
