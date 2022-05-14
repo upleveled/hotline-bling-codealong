@@ -32,28 +32,27 @@ jobs:
       - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
-      # Upgrade from Gradle 6.9 to 6.9.2 to address
-      # bug causing errors like:
-      #
-      # com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives:
-      # > Task :app:mergeExtDexRelease FAILED
-      # Type androidx.appcompat.app.ActionBar$DisplayOptions is defined multiple times
-      #
-      # https://github.com/gradle/gradle/issues/15536
-      # https://github.com/gradle/gradle/issues/19372
-      #
-      # Apparently Gradle has been updated to 7.3.3
-      # in the Expo repo as part of the work to make
-      # Expo support React Native 0.68
-      #
-      # https://github.com/expo/expo/commit/d566f199bdb03f738c8a785283e847b6a00ec37a
-      - run: sed -i'' -e 's/gradle-6.9-all.zip/gradle-6.9.2-all.zip/g' android/gradle/wrapper/gradle-wrapper.properties
+      # Use Kotlin version 1.6.0 instead of 1.4.21,
+      # which is normally specified in android/build.gradle
+      # https://github.com/expo/expo/issues/16907#issuecomment-1088809249
+      - name: Upgrade Kotlin version
+        run: sed -i'' -e $'s/kotlinVersion = "1.4.21"/kotlinVersion = "1.6.0"/g' android/build.gradle
+
+      # Set up Detox as compiling dependency as
+      # temporary workaround for React Native 0.68
+      # https://wix.github.io/Detox/docs/introduction/android/#setting-detox-up-as-a-compiling-dependency
+      # https://github.com/wix/Detox/issues/3344#issuecomment-1111197955
+      - name: Set up Detox as compiling dependency for React Native 0.68
+        run: |
+          sed -i'' -e $'s/rootProject.name = \'hotline-bling-codealong\'/rootProject.name = \'hotline-bling-codealong\'\\\ninclude \':detox\'\\\nproject(\':detox\').projectDir = new File(rootProject.projectDir, \'..\/node_modules\/detox\/android\/detox\')/' android/settings.gradle
+          sed -i'' -e $'s/\'com.wix:detox:+\'/project(path: ":detox")/' android/app/build.gradle
+          sed -i'' -e $'s/defaultConfig {/defaultConfig {\\\n        testBuildType System.getProperty("testBuildType", "debug")\\\n        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"\\\n        missingDimensionStrategy "detox", "full"/' android/app/build.gradle
 
       - name: Install Java JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '8'
+          java-version: '11'
 
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
