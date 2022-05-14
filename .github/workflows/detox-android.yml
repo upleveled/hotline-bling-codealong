@@ -45,7 +45,7 @@ jobs:
       - name: Set up Detox as compiling dependency for React Native 0.68
         run: |
           sed -i'' -e $'s/rootProject.name = \'hotline-bling-codealong\'/rootProject.name = \'hotline-bling-codealong\'\\\ninclude \':detox\'\\\nproject(\':detox\').projectDir = new File(rootProject.projectDir, \'..\/node_modules\/detox\/android\/detox\')/' android/settings.gradle
-          sed -i'' -e $'s/com.wix:detox:+/project(path: ":detox")/' android/app/build.gradle
+          sed -i'' -e $'s/\'com.wix:detox:+\'/project(path: ":detox")/' android/app/build.gradle
           sed -i'' -e $'s/defaultConfig {/defaultConfig {\\\n        testBuildType System.getProperty("testBuildType", "debug")\\\n        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"\\\n        missingDimensionStrategy "detox", "full"/' android/app/build.gradle
 
       - name: Install Java JDK
