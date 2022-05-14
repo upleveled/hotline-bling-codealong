@@ -37,6 +37,9 @@ jobs:
       - name: Upgrade packages to latest version supported by Expo SDK
         run: expo upgrade
 
+      - name: Fix any incorrect dependency versions
+        run: expo doctor --fix-dependencies
+
       # Jest is managed by Expo SDK version, but we
       # want to manage the version to keep tests stable
       - name: Restore versions to some managed Expo SDK packages which we manage
