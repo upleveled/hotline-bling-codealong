@@ -44,11 +44,6 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      # - name: Install Java JDK
-      #   run: |
-      #     brew tap homebrew/cask-versions
-      #     brew install --cask zulu11
-
       - name: Build Android app locally with gradlew
         run: yarn detox build --configuration android
 
