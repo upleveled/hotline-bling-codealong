@@ -33,7 +33,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "detox": "19.6.7",
-    "jest": "27.5.1"
+    "@types/jest": "^27.5.1",
+    "detox": "19.6.9",
+    "jest": "28.1.0",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4"
   }
 }
