@@ -1075,12 +1075,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@config-plugins/detox@1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-1.2.3.tgz#f1bb7ec685c4ffbd3ae81e3dd57eaa9175832ac9"
-  integrity sha512-0inQt2QEB+2PQZMG8f1ekvj9X0iUGy8NstkTC0q10pmhGDum2YjICY20XuhJiTOePupJrCcX6PU8loxMekV3ZQ==
+"@config-plugins/detox@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-2.0.0.tgz#10b1d0a68eccde1a5d8ecb88482aefb19a35342f"
+  integrity sha512-HBghnQCSirCIAAExXWquVoshMDGLoOr8+eXTU+M7/PUigP3YfAX8+xGElqSfeIgQMbunek7sfVyMjoVadO2yoQ==
   dependencies:
-    "@expo/config-plugins" "^4.1.0"
+    "@expo/config-plugins" "~4.1.4"
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
@@ -1192,33 +1192,6 @@
     xcode "^3.0.1"
     xml2js "0.4.23"
 
-"@expo/config-plugins@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.1.0.tgz#0365e2e51e2e3e3b4e7db1fbbada5be661798be6"
-  integrity sha512-+Uq7kzi1StUZZZivnnqNV6+v8b+SMF6MDgH+cEZxCoM9uwLXOK0rTAURzBGtl+C6EEbKnoZmnKGuzABBGPRP7A==
-  dependencies:
-    "@expo/config-types" "^44.0.0"
-    "@expo/json-file" "8.2.34"
-    "@expo/plist" "0.0.17"
-    "@expo/sdk-runtime-versions" "^1.0.0"
-    "@react-native/normalize-color" "^2.0.0"
-    chalk "^4.1.2"
-    debug "^4.3.1"
-    find-up "~5.0.0"
-    fs-extra "9.0.0"
-    getenv "^1.0.0"
-    glob "7.1.6"
-    resolve-from "^5.0.0"
-    semver "^7.3.5"
-    slash "^3.0.0"
-    xcode "^3.0.1"
-    xml2js "0.4.23"
-
-"@expo/config-types@^44.0.0":
-  version "44.0.0"
-  resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-44.0.0.tgz#d3480fe2c99f9e895dae4ebba58b74ed72d03e26"
-  integrity sha512-d+gpdKOAhqaD5RmcMzGgKzNtvE1w+GCqpFQNSXLliYlXjj+Tv0eL8EPeAdPtvke0vowpPFwd5McXLA90dgY6Jg==
-
 "@expo/config-types@^45.0.0":
   version "45.0.0"
   resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-45.0.0.tgz#963c2fdce8fbcbd003758b92ed8a25375f437ef6"
@@ -1310,15 +1283,6 @@
     semver "7.3.2"
     tempy "0.3.0"
 
-"@expo/json-file@8.2.34":
-  version "8.2.34"
-  resolved "https://registry.yarnpkg.com/@expo/json-file/-/json-file-8.2.34.tgz#2f24e90a677195f7a81e167115460eb2902c3130"
-  integrity sha512-ZxtBodAZGxdLtgKzmsC+8ViUxt1mhFW642Clu2OuG3f6PAyAFsU/SqEGag9wKFaD3x3Wt8VhL+3y5fMJmUFgPw==
-  dependencies:
-    "@babel/code-frame" "~7.10.4"
-    json5 "^1.0.1"
-    write-file-atomic "^2.3.0"
-
 "@expo/json-file@8.2.36", "@expo/json-file@^8.2.35":
   version "8.2.36"
   resolved "https://registry.yarnpkg.com/@expo/json-file/-/json-file-8.2.36.tgz#62a505cb7f30a34d097386476794680a3f7385ff"
@@ -1365,15 +1329,6 @@
     rimraf "^3.0.2"
     split "^1.0.1"
     sudo-prompt "9.1.1"
-
-"@expo/plist@0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@expo/plist/-/plist-0.0.17.tgz#0f6c594e116f45a28f5ed20998dadb5f3429f88b"
-  integrity sha512-5Ul3d/YOYE6mfum0jCE25XUnkKHZ5vGlU/X2275ZmCtGrpRn1Fl8Nq+jQKSaks3NqTfxdyXROi/TgH8Zxeg2wg==
-  dependencies:
-    "@xmldom/xmldom" "~0.7.0"
-    base64-js "^1.2.3"
-    xmlbuilder "^14.0.0"
 
 "@expo/plist@0.0.18", "@expo/plist@^0.0.18":
   version "0.0.18"
