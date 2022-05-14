@@ -32,6 +32,12 @@ jobs:
       - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
+      # Use Kotlin version 1.6.0 instead of 1.4.21,
+      # which is normally specified in android/build.gradle
+      #
+      # https://github.com/expo/expo/issues/16907#issuecomment-1088809249
+      - run: sed -i'' -e 's/kotlinVersion = "1.4.21"/kotlinVersion = "1.6.0"/g' android/build.gradle
+
       # - name: Install Java JDK
       #   uses: actions/setup-java@v3
       #   with:
