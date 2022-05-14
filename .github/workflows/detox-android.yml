@@ -32,11 +32,11 @@ jobs:
       - name: Prepare files for gradlew command
         run: expo prebuild --platform android
 
-      - name: Install Java JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '8'
+      # - name: Install Java JDK
+      #   uses: actions/setup-java@v3
+      #   with:
+      #     distribution: 'temurin'
+      #     java-version: '8'
 
       - name: Install Java JDK
         run: |
