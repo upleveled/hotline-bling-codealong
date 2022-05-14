@@ -36,7 +36,7 @@ jobs:
       # which is normally specified in android/build.gradle
       # https://github.com/expo/expo/issues/16907#issuecomment-1088809249
       - name: Upgrade Kotlin version
-        run: sed -i'' -e 's/kotlinVersion = "1.4.21"/kotlinVersion = "1.6.0"/g' android/build.gradle
+        run: sed -i'' -e $'s/kotlinVersion = "1.4.21"/kotlinVersion = "1.6.0"/g' android/build.gradle
 
       # Set up Detox as compiling dependency as
       # temporary workaround for React Native 0.68
@@ -44,9 +44,9 @@ jobs:
       # https://github.com/wix/Detox/issues/3344#issuecomment-1111197955
       - name: Set up Detox as compiling dependency for React Native 0.68
         run: |
-          gsed -i'' -e 's/rootProject.name = \'hotline-bling-codealong\'/rootProject.name = \'hotline-bling-codealong\'\\\ninclude \':detox\'\\\nproject(\':detox\').projectDir = new File(rootProject.projectDir, \'..\/node_modules\/detox\/android\/detox\')/' android/settings.gradle
-          gsed -i'' -e 's/com.wix:detox:+/project(path: ":detox")/' android/app/build.gradle
-          gsed -i'' -e 's/defaultConfig {/defaultConfig {\\\n        testBuildType System.getProperty("testBuildType", "debug")\\\n        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"\\\n        missingDimensionStrategy "detox", "full"/' android/app/build.gradle
+          sed -i'' -e $'s/rootProject.name = \'hotline-bling-codealong\'/rootProject.name = \'hotline-bling-codealong\'\\\ninclude \':detox\'\\\nproject(\':detox\').projectDir = new File(rootProject.projectDir, \'..\/node_modules\/detox\/android\/detox\')/' android/settings.gradle
+          sed -i'' -e $'s/com.wix:detox:+/project(path: ":detox")/' android/app/build.gradle
+          sed -i'' -e $'s/defaultConfig {/defaultConfig {\\\n        testBuildType System.getProperty("testBuildType", "debug")\\\n        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"\\\n        missingDimensionStrategy "detox", "full"/' android/app/build.gradle
 
       - name: Install Java JDK
         uses: actions/setup-java@v3
