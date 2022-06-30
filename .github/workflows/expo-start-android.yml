@@ -20,7 +20,7 @@ jobs:
           brew install bash coreutils
 
       - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v1.8.15
 
       - name: Set up Expo
         uses: expo/expo-github-action@v7
