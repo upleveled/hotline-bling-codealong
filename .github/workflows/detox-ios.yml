@@ -16,7 +16,7 @@ jobs:
           node-version: '16'
 
       - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v1.8.15
 
       # Sharp CLI enables faster image generation during prebuild
       # https://github.com/expo/expo-cli/issues/2676
