@@ -1,4 +1,5 @@
 module.exports = {
+  maxWorkers: 1,
   testEnvironment: require.resolve('./environment.js'),
   testTimeout: 120000,
   testRegex: '\\.e2e\\.ts$',
