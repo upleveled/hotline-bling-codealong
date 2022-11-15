@@ -1,15 +1,17 @@
 // @ts-check
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
-  maxWorkers: 1,
-  testEnvironment: require.resolve('./environment.js'),
-  testTimeout: 120000,
   rootDir: '..',
   testMatch: ['<rootDir>/e2e/**/*.e2e.ts'],
+  testTimeout: 120000,
+  maxWorkers: 1,
+  globalSetup: 'detox/runners/jest/globalSetup',
+  globalTeardown: 'detox/runners/jest/globalTeardown',
+  reporters: ['detox/runners/jest/reporter'],
+  testEnvironment: 'detox/runners/jest/testEnvironment',
   transform: {
     '\\.tsx?$': 'ts-jest',
   },
-  reporters: [require.resolve('detox/runners/jest/streamlineReporter')],
   verbose: true,
 };
 
