@@ -31,7 +31,7 @@ export default function Button(props) {
   return (
     <TouchableOpacity
       disabled={props.disabled}
-      underlayColor={'#000000'}
+      underlayColor="#000000"
       onPress={() => props.onPress()}
       style={
         props.disabled ? buttonStyles.wrapperDisabled : buttonStyles.wrapper

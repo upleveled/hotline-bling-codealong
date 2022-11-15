@@ -1,4 +1,6 @@
-module.exports = {
+// @ts-check
+/** @type {import('@jest/types').Config.InitialOptions} */
+const config = {
   maxWorkers: 1,
   testEnvironment: require.resolve('./environment.js'),
   testTimeout: 120000,
@@ -10,3 +12,5 @@ module.exports = {
   reporters: [require.resolve('detox/runners/jest/streamlineReporter')],
   verbose: true,
 };
+
+module.exports = config;

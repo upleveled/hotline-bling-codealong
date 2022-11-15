@@ -12,9 +12,13 @@ export default function Home() {
   const navigation = useNavigation();
   const [items, setItems] = useState([]);
   useFocusEffect(() => {
-    getData().then((data) => {
-      if (data) setItems(data);
-    });
+    getData()
+      .then((data) => {
+        if (data) setItems(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   });
   return (
     <Screen>
@@ -25,7 +29,7 @@ export default function Home() {
             <Container>
               {items.map((item, index) => (
                 <Guest
-                  key={index}
+                  key={item.id}
                   item={item}
                   isLast={index === items.length - 1}
                 />
