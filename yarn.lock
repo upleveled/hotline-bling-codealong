@@ -5271,10 +5271,10 @@ detect-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
   integrity sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==
 
-detox@20.0.0:
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-20.0.0.tgz#1037ef101668e0278aed31ee7fe9799a8bec4e69"
-  integrity sha512-5Td6lhvbySQZBPmSTGR2Xb/UCABceCqcprYrmtyzZwA2A4D/jDg8d7wmshd+nfYr9FviocOdmnrZr2iBs0N+NA==
+detox@20.0.1:
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-20.0.1.tgz#0093fb3fb26df108f9382f10d5f3cc494fe8649c"
+  integrity sha512-Mqc05kx1zegH516rsh+oyTNVQwVMFnxkJ4JC0wnJ8uzhmx3FRnLleyPPd5xeFwriLVWonWRjz2aI810F9IRabA==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
@@ -5285,7 +5285,7 @@ detox@20.0.0:
     duplexify "^4.1.2"
     find-up "^4.1.0"
     fs-extra "^4.0.2"
-    funpermaproxy "^1.0.1"
+    funpermaproxy "^1.1.0"
     glob "^8.0.3"
     ini "^1.3.4"
     json-cycle "^1.3.0"
@@ -6541,10 +6541,10 @@ functions-have-names@^1.2.2:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
-funpermaproxy@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/funpermaproxy/-/funpermaproxy-1.0.1.tgz#4650e69b7c334d9717c06beba9b339cc08ac3335"
-  integrity sha512-9pEzs5vnNtR7ZGihly98w/mQ7blsvl68Wj30ZCDAXy7qDN4CWLLjdfjtH/P2m6whsnaJkw15hysCNHMXue+wdA==
+funpermaproxy@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/funpermaproxy/-/funpermaproxy-1.1.0.tgz#39cb0b8bea908051e4608d8a414f1d87b55bf557"
+  integrity sha512-2Sp1hWuO8m5fqeFDusyhKqYPT+7rGLw34N3qonDcdRP8+n7M7Gl/yKp/q7oCxnnJ6pWCectOmLFJpsMU/++KrQ==
 
 gauge@^3.0.0:
   version "3.0.2"
