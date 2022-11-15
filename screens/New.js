@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import * as ImagePicker from 'expo-image-picker';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import Button from '../components/Button';
@@ -12,24 +11,9 @@ import { addData } from '../util/storage';
 export default function New() {
   const navigation = useNavigation();
   const [title, setTitle] = useState('');
-  const [image, setImage] = useState(null);
-
-  const selectImage = async () => {
-    let permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (permissionResult.granted === false) {
-      alert('Permission to access camera roll is required!');
-      return;
-    }
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
-    if (pickerResult.cancelled === true) {
-      return;
-    }
-    setImage(pickerResult.uri);
-  };
 
   const save = async () => {
-    await addData({ title, image });
+    await addData({ title });
     navigation.goBack();
   };
   return (
@@ -41,7 +25,7 @@ export default function New() {
             <Input
               value={title}
               onChangeText={(text) => setTitle(text)}
-              placeholder={'Guest name'}
+              placeholder="Guest name"
             />
           </Container>
         </ScrollView>

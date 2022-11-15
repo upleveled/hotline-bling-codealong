@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import React, { Fragment } from 'react';
-import { StyleSheet } from 'react-native';
 import Home from './screens/Home';
 import New from './screens/New';
 
@@ -15,10 +14,10 @@ const forFade = ({ current }) => ({
   },
 });
 
-export default function App(props) {
+export default function App() {
   return (
     <Fragment>
-      <StatusBar backgroundColor={'#000000'} translucent={true} style="light" />
+      <StatusBar backgroundColor="#000000" translucent={true} style="light" />
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Home"
@@ -34,12 +33,3 @@ export default function App(props) {
     </Fragment>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

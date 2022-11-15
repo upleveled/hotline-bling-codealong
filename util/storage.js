@@ -17,7 +17,7 @@ export async function getData() {
     if (json === null) return null;
     return JSON.parse(json);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -25,6 +25,8 @@ export async function addData(value) {
   let data = [];
   const existing = await getData();
   if (existing) data = [...existing];
-  data.push(value);
+  const nextId =
+    (data.map((item) => item.id).sort((a, b) => b - a)[0] || -1) + 1;
+  data.push({ id: nextId, ...value });
   await storeData(data);
 }
