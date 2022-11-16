@@ -13,7 +13,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install newer Bash and coreutils (for timeout)
         run: |
@@ -61,7 +61,7 @@ jobs:
 
       - name: Start emulator and run Expo dev server
         uses: reactivecircus/android-emulator-runner@v2
-        timeout-minutes: 15
+        timeout-minutes: 20
         with:
           target: aosp_atd
           api-level: 30
