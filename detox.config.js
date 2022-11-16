@@ -1,7 +1,11 @@
 module.exports = {
-  testRunner: 'jest',
-  runnerConfig: require.resolve('./e2e/jest.config.js'),
-  specs: 'e2e',
+  testRunner: {
+    $0: 'jest',
+    args: {
+      config: require.resolve('./e2e/jest.config.js'),
+      _: ['e2e'],
+    },
+  },
   behavior: {
     init: {
       exposeGlobals: false,
