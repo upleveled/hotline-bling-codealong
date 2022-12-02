@@ -44,6 +44,9 @@ jobs:
       # want to manage the version to keep tests stable
       - name: Restore versions to some managed Expo SDK packages which we manage
         run: yarn add jest@${{ steps.check-jest-version.outputs.version }} --dev --exact
+      
+      - name: Deduplicate packages in yarn.lock
+        run: npx yarn-deduplicate yarn.lock
 
       - name: Commit and create PR
         uses: peter-evans/create-pull-request@v4
