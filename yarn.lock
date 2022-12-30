@@ -4036,10 +4036,10 @@ detect-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
   integrity sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==
 
-detox@20.1.0:
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-20.1.0.tgz#8b2e3d4ff31555494b8c4a48293e14e268f81aa2"
-  integrity sha512-9VUAAZRDBFcH+9SndbXY/2f0mBcQPDmsJPbanJ7QFHag0MHpaDgpurahDXC5lmbIxHSj9AFE42SGMyH2RANtJA==
+detox@20.1.1:
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-20.1.1.tgz#4134d7af428cf3cdec299b3282a763297120760c"
+  integrity sha512-0ieeWAyo2f3YKeFwm7KCz4lBkCJIydyqzCQVN1sw/ZU9x9Qc8kz+itKAEiH4DHUlLkb4YLzfEbAXfO09wvrQ3w==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
@@ -4054,7 +4054,6 @@ detox@20.1.0:
     ini "^1.3.4"
     json-cycle "^1.3.0"
     lodash "^4.17.5"
-    minimist "^1.2.0"
     multi-sort-stream "^1.0.3"
     multipipe "^4.0.0"
     node-ipc "^9.2.1"
