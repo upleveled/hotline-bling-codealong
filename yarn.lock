@@ -1123,10 +1123,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@config-plugins/detox@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-4.0.0.tgz#fbef3ce487714d8542855f018f076c32e47febe5"
-  integrity sha512-cz95nHuNlKptVV9UdactZdKFv6KldSAiPi3O06BWaas7VI05vCVx9egdI+rxBBQXC3Us/kL7qC3osPagTEFwiw==
+"@config-plugins/detox@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-5.0.1.tgz#70c0a456450c9d5466e4ea99d26a8b077be4929d"
+  integrity sha512-HtkBkgnbc6xtrKUOz+fQVrk+qDMVMZarkARUAaJjuNXM39mFe+opkXJqAo9mQ2WoLZnD4pzv8Snwez0HZ7aqTg==
+  dependencies:
+    expo-build-properties "^0.5.1"
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
@@ -2635,6 +2637,16 @@ ajv@^6.10.0, ajv@^6.12.4:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^8.11.0:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
+  integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 ajv@^8.6.3:
@@ -4822,6 +4834,14 @@ expo-asset@~8.7.0:
     md5-file "^3.2.3"
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
+
+expo-build-properties@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-0.5.1.tgz#6221f6b93f4d21c16c94cb781da1ec5ba21d00ea"
+  integrity sha512-wa02F4dmQTCxZ7rEBtaZCU0rCzpoUYSKF51cKCRT8ECEEkHe/k78VN8wI9fj03L7cIqJA5CJb2ZYydxKTbRHxA==
+  dependencies:
+    ajv "^8.11.0"
+    semver "^7.3.5"
 
 expo-constants@~14.0.0, expo-constants@~14.0.2:
   version "14.0.2"
