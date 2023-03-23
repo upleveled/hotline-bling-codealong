@@ -32,7 +32,7 @@ jobs:
         run: echo "::set-output name=version::$(yq '.devDependencies.jest' package.json)"
 
       - name: Upgrade packages to latest version supported by Expo SDK
-        run: yarn expo upgrade
+        run: npx expo-cli@latest upgrade
 
       - name: Fix any incorrect dependency versions
         run: yarn expo doctor --fix-dependencies
