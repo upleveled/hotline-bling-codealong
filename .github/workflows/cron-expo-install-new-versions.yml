@@ -24,9 +24,6 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install Expo CLI
-        run: npm install --global expo-cli
-
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
@@ -35,10 +32,10 @@ jobs:
         run: echo "::set-output name=version::$(yq '.devDependencies.jest' package.json)"
 
       - name: Upgrade packages to latest version supported by Expo SDK
-        run: expo upgrade
+        run: yarn expo upgrade
 
       - name: Fix any incorrect dependency versions
-        run: expo doctor --fix-dependencies
+        run: yarn expo doctor --fix-dependencies
 
       # Jest is managed by Expo SDK version, but we
       # want to manage the version to keep tests stable
