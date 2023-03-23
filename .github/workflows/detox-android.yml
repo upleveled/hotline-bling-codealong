@@ -23,14 +23,8 @@ jobs:
       - name: Install Sharp CLI for faster image generation during prebuild
         run: yarn global add sharp-cli
 
-      - name: Set up Expo
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
       - name: Prepare files for gradlew command
-        run: expo prebuild --platform android
+        run: yarn expo prebuild --platform android
 
       # Use Kotlin version 1.6.0 instead of 1.4.21,
       # which is normally specified in android/build.gradle
