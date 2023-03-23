@@ -23,14 +23,8 @@ jobs:
       - name: Install Sharp CLI for faster image generation during prebuild
         run: yarn global add sharp-cli
 
-      - name: Set up Expo
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
       - name: Prepare files for xcodebuild command
-        run: expo prebuild --platform ios
+        run: yarn expo prebuild --platform ios
 
       - name: Build iOS app locally with xcodebuild
         run: yarn detox build --configuration ios

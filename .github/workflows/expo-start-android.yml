@@ -22,12 +22,6 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1.8.15
 
-      - name: Set up Expo
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
       - name: Cache AVD snapshot
         uses: actions/cache@v3
         id: avd-cache
