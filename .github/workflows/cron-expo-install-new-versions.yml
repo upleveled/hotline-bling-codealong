@@ -32,7 +32,7 @@ jobs:
 
       - name: Save existing Jest version to restore later
         id: check-jest-version
-        run: echo "::set-output name=version::$(yq '.devDependencies.jest' package.json)"
+        run: echo JEST_VERSION=$(yq '.devDependencies.jest' package.json) >> $GITHUB_OUTPUT
 
       - name: Upgrade packages to latest version supported by Expo SDK
         run: expo upgrade
@@ -43,8 +43,8 @@ jobs:
       # Jest is managed by Expo SDK version, but we
       # want to manage the version to keep tests stable
       - name: Restore versions to some managed Expo SDK packages which we manage
-        run: yarn add jest@${{ steps.check-jest-version.outputs.version }} --dev --exact
-      
+        run: yarn add jest@${{ steps.check-jest-version.outputs.JEST_VERSION }} --dev --exact
+
       - name: Deduplicate packages in yarn.lock
         run: npx yarn-deduplicate yarn.lock
 
