@@ -38,7 +38,7 @@ jobs:
         run: expo upgrade
 
       - name: Fix any incorrect dependency versions
-        run: expo doctor --fix-dependencies
+        run: npx expo-doctor --fix-dependencies
 
       # Jest is managed by Expo SDK version, but we
       # want to manage the version to keep tests stable
