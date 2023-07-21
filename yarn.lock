@@ -1131,12 +1131,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@config-plugins/detox@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-5.0.1.tgz#70c0a456450c9d5466e4ea99d26a8b077be4929d"
-  integrity sha512-HtkBkgnbc6xtrKUOz+fQVrk+qDMVMZarkARUAaJjuNXM39mFe+opkXJqAo9mQ2WoLZnD4pzv8Snwez0HZ7aqTg==
+"@config-plugins/detox@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-6.0.0.tgz#879e576f21eb076a7ef57d868f84bca9bf662be0"
+  integrity sha512-WUpMYU1gbkynPhCAEnzlyJYjNgSYHxJq6QEy2Bkm/g/9UALqf9wCZw16LJysF6gWuq7WUYSx1kmfGPWkSpFJog==
   dependencies:
-    expo-build-properties "^0.5.1"
+    expo-build-properties "~0.8.3"
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
@@ -4894,13 +4894,13 @@ expo-asset@~8.9.1:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-build-properties@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-0.5.1.tgz#6221f6b93f4d21c16c94cb781da1ec5ba21d00ea"
-  integrity sha512-wa02F4dmQTCxZ7rEBtaZCU0rCzpoUYSKF51cKCRT8ECEEkHe/k78VN8wI9fj03L7cIqJA5CJb2ZYydxKTbRHxA==
+expo-build-properties@~0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-0.8.3.tgz#fbfa156e9619bebda71c66af9a26ebc3490b2365"
+  integrity sha512-kEDDuAadHqJTkvCGK4fXYHVrePiJO1DjyW95AicmwuGwQvGJydYFbuoauf9ybAU+4UH4arhbce8gHI3ZpIj3Jw==
   dependencies:
     ajv "^8.11.0"
-    semver "^7.3.5"
+    semver "^7.5.3"
 
 expo-constants@~14.2.0, expo-constants@~14.2.1:
   version "14.2.1"
