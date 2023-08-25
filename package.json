@@ -46,7 +46,7 @@
     "@typescript-eslint/parser": "5.42.1",
     "@upleveled/eslint-config-upleveled": "^3.3.9",
     "@upleveled/eslint-plugin-upleveled": "2.1.6",
-    "detox": "20.11.3",
+    "detox": "20.11.4",
     "eslint": "8.27.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-import-resolver-typescript": "3.5.2",
@@ -61,7 +61,7 @@
     "eslint-plugin-sonarjs": "0.16.0",
     "eslint-plugin-testing-library": "5.9.1",
     "eslint-plugin-unicorn": "44.0.2",
-    "jest": "29.6.2",
+    "jest": "29.6.4",
     "libpg-query": "13.3.0",
     "ts-jest": "^28.0.2",
     "typescript": "^4.9.4"
