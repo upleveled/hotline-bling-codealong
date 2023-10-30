@@ -21,6 +21,7 @@
         'jest',
       ],
       enabled: true,
+      automerge: true,
     },
   ],
 }
