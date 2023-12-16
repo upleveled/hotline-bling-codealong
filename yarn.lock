@@ -1576,7 +1576,17 @@
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0.tgz#e2989b85e95a82bce216f88cf8fb583ab050ec95"
   integrity sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==
 
-"@expo/xcpretty@4.2.2", "@expo/xcpretty@^4.2.1":
+"@expo/xcpretty@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@expo/xcpretty/-/xcpretty-4.3.0.tgz#d745c2c5ec38fc6acd451112bb05c6ae952a2c3a"
+  integrity sha512-whBbvHZ2Q10T5TNmN0z5NbO6C9ZDw+XUTu8h6vVMnMzQrbGexc9oaCCZfz+L3Q7TEL5vfr+9L86nY62c3Bsm+g==
+  dependencies:
+    "@babel/code-frame" "7.10.4"
+    chalk "^4.1.0"
+    find-up "^5.0.0"
+    js-yaml "^4.1.0"
+
+"@expo/xcpretty@^4.2.1":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@expo/xcpretty/-/xcpretty-4.2.2.tgz#7890f86b017015be8a20242ae74fe6ed4b80a92c"
   integrity sha512-Lke/geldJqUV0Dfxg5/QIOugOzdqZ/rQ9yHKSgGbjZtG1uiSqWyFwWvXmrdd3/sIdX33eykGvIcf+OrvvcXVUw==
@@ -4212,10 +4222,10 @@ detect-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
   integrity sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==
 
-detox@20.14.0:
-  version "20.14.0"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-20.14.0.tgz#88cddffaeb0903875c21e04347879f93e84c6a04"
-  integrity sha512-mQoN2xy9IeFu5OUgm3KngRd8mwP5Ef42CpTbA/lCpS8bJr5fFWPlWxeYdf5nkPmhNriKSr3wCq9BI/l9gjwp8w==
+detox@20.14.1:
+  version "20.14.1"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-20.14.1.tgz#de2adff46a674f116f8ec2290e6ebd4d4db34915"
+  integrity sha512-hwtZ0TSmhw35xK86F3uUgSJ6IB98o1kQg4utpYhrIcXL3Qnuogxyy/7WOI6XUW0CK8+EIk8kBgzC7aZ/HWzPtQ==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
