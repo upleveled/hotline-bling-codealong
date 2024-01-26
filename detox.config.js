@@ -17,7 +17,7 @@ module.exports = {
 
       // Run xcodebuild and exit with non-zero if the build fails
       build:
-        'xcodebuild -workspace ios/hotlineblingcodealong.xcworkspace -scheme hotlineblingcodealong -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -arch x86_64 -UseModernBuildSystem YES',
+        'xcodebuild -workspace ios/hotlineblingcodealong.xcworkspace -scheme hotlineblingcodealong -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -arch x86_64 -UseModernBuildSystem=YES | npx excpretty ./',
       binaryPath:
         'ios/build/Build/Products/Release-iphonesimulator/hotlineblingcodealong.app',
 
