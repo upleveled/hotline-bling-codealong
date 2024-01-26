@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   testRunner: {
     $0: 'jest',
     args: {
@@ -85,3 +85,5 @@ module.exports = {
     },
   },
 };
+
+export default config;
