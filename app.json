@@ -32,6 +32,21 @@
       "backgroundColor": "#000000",
       "barStyle": "light-content"
     },
-    "plugins": ["@config-plugins/detox"]
+    "plugins": [
+      "@config-plugins/detox",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 30,
+            "targetSdkVersion": 30,
+            "buildToolsVersion": "30.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
+      ]
+    ]
   }
 }

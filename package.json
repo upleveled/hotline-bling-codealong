@@ -20,6 +20,7 @@
     "@react-navigation/native-stack": "6.9.17",
     "@types/react": "~18.0.27",
     "expo": "49.0.22",
+    "expo-build-properties": "~0.8.3",
     "expo-constants": "~15.4.5",
     "expo-image-picker": "~14.7.1",
     "expo-splash-screen": "~0.26.2",
