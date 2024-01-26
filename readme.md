@@ -4,7 +4,7 @@ Simple demo showing how an Expo (React Native) app is built
 
 ## Tests
 
-The test setup for this app showcases
+The test setup for this app showcases:
 
 1. A managed Expo app
 2. GitHub Actions
@@ -18,3 +18,7 @@ The test setup for this app showcases
 
 - App icon credit goes to Oksana Latysheva: https://thenounproject.com/search/?q=party&i=1004872
 - Credit for structure and inspiration comes from: https://github.com/andreas-arkulpa/my-favorite-food
+- Inspiration for the test setup:
+  - Many resources in original PR: https://github.com/upleveled/hotline-bling-codealong/pull/21
+  - Android and iOS build on GitHub Actions https://github.com/Isratja45/spacedrive/blob/8acc16bdecd6819ea60bcc5c6e63fb3dcfda5160/.github/workflows/Smobile-ci.yml
+  - Android build + local Maestro tests on GitHub Actions https://github.com/obytes/react-native-template-obytes/blob/master/.github/workflows/e2e-android-eas-build.yml
