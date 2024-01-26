@@ -6,6 +6,7 @@ jobs:
   build:
     name: Expo Dev Server Tests
     runs-on: macos-latest
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v3

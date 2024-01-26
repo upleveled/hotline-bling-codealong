@@ -6,6 +6,7 @@ jobs:
   build:
     name: Detox Integration Tests - Android
     runs-on: macos-12
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v3
