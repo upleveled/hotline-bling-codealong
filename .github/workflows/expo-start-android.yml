@@ -11,17 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 'latest'
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Install newer Bash and coreutils (for timeout)
         run: |
           brew install bash coreutils
-
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1.8.15
 
       - name: Cache AVD snapshot
         uses: actions/cache@v3
@@ -53,6 +57,11 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
           script: echo "Generated AVD snapshot for caching"
+
+      - name: Switch to CommonJS for Metro config
+        run: |
+          # Switch "type": "module" to "type": "commonjs" in package.json
+          sed -i'' -e $'s/"type": "module"/"type": "commonjs"/g' package.json
 
       - name: Start emulator and run Expo dev server
         uses: reactivecircus/android-emulator-runner@v2

@@ -2,7 +2,7 @@ module.exports = {
   testRunner: {
     $0: 'jest',
     args: {
-      config: require.resolve('./e2e/jest.config.js'),
+      config: './e2e/jest.config.js',
       _: ['e2e'],
     },
   },
@@ -16,7 +16,8 @@ module.exports = {
       type: 'ios.app',
 
       // Run xcodebuild and exit with non-zero if the build fails
-      build: './scripts/build-detox-ios.sh hotlineblingcodealong Release YES',
+      build:
+        'xcodebuild -workspace ios/hotlineblingcodealong.xcworkspace -scheme hotlineblingcodealong -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -arch x86_64 -UseModernBuildSystem=YES | npx excpretty ./',
       binaryPath:
         'ios/build/Build/Products/Release-iphonesimulator/hotlineblingcodealong.app',
 
