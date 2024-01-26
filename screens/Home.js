@@ -29,7 +29,7 @@ export default function Home() {
             <Container>
               {items.map((item, index) => (
                 <Guest
-                  key={item.id}
+                  key={`guest-${item.id}`}
                   item={item}
                   isLast={index === items.length - 1}
                 />
