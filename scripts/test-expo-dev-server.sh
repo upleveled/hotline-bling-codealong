@@ -3,7 +3,7 @@
 touch expo-start.log
 
 # Run Expo dev server, redirecting stdout + stderr to log file
-expo start --android --non-interactive > expo-start.log 2>&1 &
+npx expo start --android --non-interactive > expo-start.log 2>&1 &
 expo_start_pid=$!
 
 # Loop over every line added to log file, exiting if
