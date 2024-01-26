@@ -11,17 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 'latest'
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Install newer Bash and coreutils (for timeout)
         run: |
           brew install bash coreutils
-
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1.8.15
 
       - name: Cache AVD snapshot
         uses: actions/cache@v3

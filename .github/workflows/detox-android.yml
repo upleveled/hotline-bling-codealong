@@ -11,21 +11,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 'latest'
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          cache: 'pnpm'
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1.8.15
+      - name: Install dependencies
+        run: pnpm install
 
       # Sharp CLI enables faster image generation during prebuild
       # https://github.com/expo/expo-cli/issues/2676
       - name: Install Sharp CLI for faster image generation during prebuild
-        run: yarn global add sharp-cli
+        run: pnpm add --global sharp-cli
 
       - name: Prepare files for gradlew command
-        run: yarn expo prebuild --platform android
+        run: pnpm expo prebuild --platform android
 
       # Use Kotlin version 1.6.0 instead of 1.4.21,
       # which is normally specified in android/build.gradle
@@ -50,7 +54,7 @@ jobs:
           java-version: '11'
 
       - name: Build Android app locally with gradlew
-        run: yarn detox build --configuration android
+        run: pnpm detox build --configuration android
 
       - name: Cache AVD snapshot
         uses: actions/cache@v3
@@ -92,7 +96,7 @@ jobs:
           channel: canary
           profile: pixel
           avd-name: Pixel_3a_API_30_AOSP
-          script: yarn detox test --configuration android
+          script: pnpm detox test --configuration android
 
       - name: Store Detox artifacts on test failure
         uses: actions/upload-artifact@v3

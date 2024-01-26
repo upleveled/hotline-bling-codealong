@@ -11,24 +11,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 'latest'
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          cache: 'pnpm'
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1.8.15
+      - name: Install dependencies
+        run: pnpm install
 
       # Sharp CLI enables faster image generation during prebuild
       # https://github.com/expo/expo-cli/issues/2676
       - name: Install Sharp CLI for faster image generation during prebuild
-        run: yarn global add sharp-cli
+        run: pnpm add --global sharp-cli
 
       - name: Prepare files for xcodebuild command
-        run: yarn expo prebuild --platform ios
+        run: pnpm expo prebuild --platform ios
 
       - name: Build iOS app locally with xcodebuild
-        run: yarn detox build --configuration ios
+        run: pnpm detox build --configuration ios
 
       - name: Set up Simulator for Detox
         run: |
@@ -36,7 +40,7 @@ jobs:
           brew install applesimutils
 
       - name: Run tests
-        run: yarn detox test --configuration ios
+        run: pnpm detox test --configuration ios
 
       # Store any Detox screenshots on test failure
       - uses: actions/upload-artifact@v3
