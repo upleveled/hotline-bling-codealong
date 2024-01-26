@@ -53,6 +53,11 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
+      - name: Switch to CommonJS for Detox config
+        # Switch "type": "module" to "type": "commonjs" in package.json
+        run: |
+          sed -i'' -e $'s/"type": "module"/"type": "commonjs"/g' package.json
+
       - name: Build Android app locally with gradlew
         run: pnpm detox build --configuration android
 
