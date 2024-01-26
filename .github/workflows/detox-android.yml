@@ -54,8 +54,8 @@ jobs:
           java-version: '17'
 
       - name: Switch to CommonJS for Detox config
-        # Switch "type": "module" to "type": "commonjs" in package.json
         run: |
+          # Switch "type": "module" to "type": "commonjs" in package.json
           sed -i'' -e $'s/"type": "module"/"type": "commonjs"/g' package.json
 
       - name: Build Android app locally with gradlew
