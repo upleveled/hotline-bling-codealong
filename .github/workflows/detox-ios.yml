@@ -26,7 +26,7 @@ jobs:
       # Sharp CLI enables faster image generation during prebuild
       # https://github.com/expo/expo-cli/issues/2676
       - name: Install Sharp CLI for faster image generation during prebuild
-        run: pnpm add --global sharp-cli@2.1.1
+        run: npm install --global sharp-cli
 
       - name: Prepare files for xcodebuild command
         run: pnpm expo prebuild --platform ios
