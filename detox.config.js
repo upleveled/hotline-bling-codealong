@@ -2,7 +2,7 @@ const config = {
   testRunner: {
     $0: 'jest',
     args: {
-      config: require.resolve('./e2e/jest.config.js'),
+      config: './e2e/jest.config.js',
       _: ['e2e'],
     },
   },
