@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         # To trigger further `on: [push]` workflow runs
         # Ref: https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
         # Ref: https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#push-using-ssh-deploy-keys
@@ -54,7 +54,7 @@ jobs:
         run: pnpm add jest@${{ steps.check-jest-version.outputs.JEST_VERSION }} --save-dev --save-exact
 
       - name: Commit and create PR
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           branch: 'expo-upgrade-packages'
           title: 'Upgrade packages to versions with Expo SDK support'
