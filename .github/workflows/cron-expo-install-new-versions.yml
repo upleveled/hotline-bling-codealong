@@ -40,7 +40,7 @@ jobs:
         run: echo JEST_VERSION=$(yq '.devDependencies.jest' package.json) >> $GITHUB_OUTPUT
 
       - name: Upgrade packages to latest version supported by Expo SDK
-        run: expo upgrade
+        run: npx expo upgrade
 
       - name: Fix any incorrect dependency versions
         run: npx expo install --fix
