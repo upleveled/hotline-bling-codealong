@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     name: Detox Integration Tests - iOS
-    runs-on: macos-14
+    runs-on: macos-13
     timeout-minutes: 45
     steps:
       - name: Checkout
