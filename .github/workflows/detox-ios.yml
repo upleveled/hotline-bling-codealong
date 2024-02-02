@@ -5,7 +5,15 @@ on: [push]
 jobs:
   build:
     name: Detox Integration Tests - iOS
-    runs-on: macos-13
+
+    # macos-13 fails with a Detox error about the iPhone 13 Pro device type:
+    # ```
+    # DetoxRuntimeError: Failed to find a device by type = "iPhone 13 Pro"
+    # HINT: Run 'applesimutils --list' to list your supported devices. It is advised only to specify a device type, e.g., "iPhone Xʀ" and avoid explicit search by OS version.
+    # ```
+    # However, applesimutils --list reports that a device with "iPhone 13 Pro" exists
+    runs-on: macos-12
+
     timeout-minutes: 45
     steps:
       - name: Checkout
@@ -43,7 +51,6 @@ jobs:
         run: |
           brew tap wix/brew
           brew install applesimutils
-          applesimutils --list
 
       - name: Run tests
         run: pnpm detox test --configuration ios
