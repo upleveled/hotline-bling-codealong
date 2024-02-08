@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@config-plugins/detox':
-    specifier: 6.0.0
-    version: 6.0.0(expo@49.0.22)
+    specifier: 7.0.0
+    version: 7.0.0(expo@49.0.22)
   '@expo/xcpretty':
     specifier: 4.3.1
     version: 4.3.1
@@ -1587,13 +1587,13 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@config-plugins/detox@6.0.0(expo@49.0.22):
-    resolution: {integrity: sha512-WUpMYU1gbkynPhCAEnzlyJYjNgSYHxJq6QEy2Bkm/g/9UALqf9wCZw16LJysF6gWuq7WUYSx1kmfGPWkSpFJog==}
+  /@config-plugins/detox@7.0.0(expo@49.0.22):
+    resolution: {integrity: sha512-uI7GU0g6JkzlKwjD61NP3EcMrjuIPbTEeByiSiWR3aJ7U+uf1xiQlTlHQSNQtcf3/MWfZj4ref/zyBma9c1muw==}
     peerDependencies:
-      expo: ^49
+      expo: ^50
     dependencies:
       expo: 49.0.22(@babel/core@7.23.9)
-      expo-build-properties: 0.8.3(expo@49.0.22)
+      expo-build-properties: 0.11.1(expo@49.0.22)
     dev: false
 
   /@egjs/hammerjs@2.0.17:
@@ -5376,8 +5376,8 @@ packages:
       - supports-color
     dev: false
 
-  /expo-build-properties@0.8.3(expo@49.0.22):
-    resolution: {integrity: sha512-kEDDuAadHqJTkvCGK4fXYHVrePiJO1DjyW95AicmwuGwQvGJydYFbuoauf9ybAU+4UH4arhbce8gHI3ZpIj3Jw==}
+  /expo-build-properties@0.11.1(expo@49.0.22):
+    resolution: {integrity: sha512-m4j4aEjFaDuBE6KWYMxDhWgLzzSmpE7uHKAwtvXyNmRK+6JKF0gjiXi0sXgI5ngNppDQpsyPFMvqG7uQpRuCuw==}
     peerDependencies:
       expo: '*'
     dependencies:
