@@ -36,6 +36,13 @@ jobs:
       - name: Install Sharp CLI for faster image generation during prebuild
         run: npm install --global sharp-cli
 
+      # CocoaPods version 1.15.0 has incompatibilities with React Native
+      # https://github.com/facebook/react-native/issues/42698
+      # https://github.com/expo/expo/issues/26828
+      # https://github.com/CocoaPods/CocoaPods/issues/12226
+      - name: Change cocoapods version
+        run: sudo gem install cocoapods -v 1.14.3
+
       - name: Prepare files for xcodebuild command
         run: pnpm expo prebuild --platform ios
 
