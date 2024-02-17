@@ -41,7 +41,9 @@ jobs:
       # https://github.com/expo/expo/issues/26828
       # https://github.com/CocoaPods/CocoaPods/issues/12226
       - name: Change cocoapods version
-        run: sudo gem install cocoapods -v 1.14.3
+        run: |
+          gem uninstall cocoapods -v 1.15.0 --ignore-dependencies
+          gem install cocoapods -v 1.15.2
 
       - name: Prepare files for xcodebuild command
         run: pnpm expo prebuild --platform ios
