@@ -45,6 +45,11 @@ jobs:
       - name: Fix any incorrect dependency versions
         run: npx expo install --fix
 
+      - name: Switch to CommonJS for Metro config
+        run: |
+          # Switch "type": "module" to "type": "commonjs" in package.json
+          sed -i'' -e $'s/"type": "module"/"type": "commonjs"/g' package.json
+
       - name: Diagnose any problems
         run: npx expo-doctor
 
