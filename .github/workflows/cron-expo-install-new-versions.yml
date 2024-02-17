@@ -54,7 +54,7 @@ jobs:
         run: pnpm add jest@${{ steps.check-jest-version.outputs.JEST_VERSION }} --save-dev --save-exact
 
       - name: Commit and create PR
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           branch: 'expo-upgrade-packages'
           title: 'Upgrade packages to versions with Expo SDK support'
