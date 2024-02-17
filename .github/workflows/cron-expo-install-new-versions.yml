@@ -45,13 +45,18 @@ jobs:
       - name: Fix any incorrect dependency versions
         run: npx expo install --fix
 
-      - name: Switch to CommonJS for Metro config
+      - name: Switch to CommonJS for Metro config check in expo-doctor
         run: |
           # Switch "type": "module" to "type": "commonjs" in package.json
           sed -i'' -e $'s/"type": "module"/"type": "commonjs"/g' package.json
 
       - name: Diagnose any problems
         run: npx expo-doctor
+
+      - name: Switch to CommonJS for Metro config check in expo-doctor
+        run: |
+          # Switch "type": "commonjs" to "type": "module" in package.json
+          sed -i'' -e $'s/"type": "commonjs"/"type": "module"/g' package.json
 
       # Jest is managed by Expo SDK version, but we
       # want to manage the version to keep tests stable
