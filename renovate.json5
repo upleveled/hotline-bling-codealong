@@ -16,9 +16,12 @@
         '@react-navigation/native',
         '@react-navigation/native-stack',
         'detox',
+        'eslint',
+        'eslint-config-upleveled',
         // Jest is managed by Expo SDK version, but
         // we want the latest version to keep tests stable
         'jest',
+        'ts-jest',
       ],
       enabled: true,
       automerge: true,
