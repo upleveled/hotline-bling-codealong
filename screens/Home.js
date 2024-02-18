@@ -8,9 +8,16 @@ import Header from '../components/Header';
 import Screen from '../components/Screen';
 import { getData } from '../util/storage';
 
+/**
+ * @typedef {{
+ *   id: number;
+ *   title: string;
+ * }} Guest
+ */
+
 export default function Home() {
   const navigation = useNavigation();
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(/** @type {Guest[]} */ ([]));
   useFocusEffect(() => {
     getData()
       .then((data) => {
@@ -29,7 +36,7 @@ export default function Home() {
             <Container>
               {items.map((item, index) => (
                 <Guest
-                  key={`guest-${/** @type {number} */ (item.id)}`}
+                  key={`guest-${item.id}`}
                   item={item}
                   isLast={index === items.length - 1}
                 />
