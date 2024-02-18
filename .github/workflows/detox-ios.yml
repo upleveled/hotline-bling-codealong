@@ -48,11 +48,6 @@ jobs:
       - name: Prepare files for xcodebuild command
         run: pnpm expo prebuild --platform ios
 
-      - name: Switch to CommonJS for Detox config
-        run: |
-          # Switch "type": "module" to "type": "commonjs" in package.json
-          sed -i'' -e $'s/"type": "module"/"type": "commonjs"/g' package.json
-
       - name: Build iOS app locally with xcodebuild
         run: pnpm detox build --configuration ios
 
