@@ -48,7 +48,7 @@ jobs:
           sed -i'' -e $'s/defaultConfig {/defaultConfig {\\\n        testBuildType System.getProperty("testBuildType", "debug")\\\n        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"\\\n        missingDimensionStrategy "detox", "full"/' android/app/build.gradle
 
       - name: Install Java JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
