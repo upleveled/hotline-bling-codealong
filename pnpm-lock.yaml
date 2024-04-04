@@ -83,8 +83,8 @@ devDependencies:
     specifier: ~18.0.10
     version: 18.0.11
   detox:
-    specifier: 20.19.4
-    version: 20.19.4(@jest/types@29.6.3)(jest@29.7.0)
+    specifier: 20.20.0
+    version: 20.20.0(@jest/types@29.6.3)(jest@29.7.0)
   eslint:
     specifier: 8.57.0
     version: 8.57.0
@@ -4609,8 +4609,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /detox@20.19.4(@jest/types@29.6.3)(jest@29.7.0):
-    resolution: {integrity: sha512-frlWR+6oSrVhyr2xXqnSUbOwxBl1Yl7cdayIErVcHYIxfWIMYOH9o4csuIso3HRCUpJUwZkQrg0IsZUzWe08IA==}
+  /detox@20.20.0(@jest/types@29.6.3)(jest@29.7.0):
+    resolution: {integrity: sha512-8aiIcNrrjsrWCMGiDB22vGKYHLfDVgwcCMlFmEiJsVbPfhtjDbhGSfSvHqpyf6rb63GEPq/HxCkCy+NBkowXtQ==}
     engines: {node: '>=14'}
     hasBin: true
     requiresBuild: true
