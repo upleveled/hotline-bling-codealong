@@ -11,6 +11,7 @@
     "start": "expo start",
     "web": "expo start --web"
   },
+  "edit-to-stop-endless-renovate-rebasing": "true",
   "dependencies": {
     "@config-plugins/detox": "8.0.0",
     "@expo/xcpretty": "4.3.2",
