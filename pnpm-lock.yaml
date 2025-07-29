@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  form-data: 3.0.4
+
 importers:
 
   .:
@@ -2288,6 +2291,7 @@ packages:
 
   detox-copilot@0.0.14:
     resolution: {integrity: sha512-XzruvuEVnX/sGkkDLDDLTGuwyoS0qLk+g5psDWgpLrnFd9w4QA0I65G5dwPzcK68lYaOGb0FThXv3fmD37/Mlg==}
+    deprecated: This package has been renamed to @wix-pilot/core. Please update your dependencies accordingly.
 
   detox@20.27.3:
     resolution: {integrity: sha512-bMAjL+6dQLF75DWbJb0gTp6/cOnpFqu5CU+VcE48ZIRLBQp5KD/ppk2zvx/B8k+CeQJjWFGs8exfpVuOBJUTpw==}
@@ -2867,8 +2871,8 @@ packages:
     resolution: {integrity: sha512-TMKDUnIte6bfb5nWv7V/caI169OHgvwjb7V4WkeUvbQQdjr5rWKqHFiKWb/fcOwB+CzBT+qbWjvj+DVwRskpIg==}
     engines: {node: '>=14'}
 
-  form-data@3.0.1:
-    resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
+  form-data@3.0.4:
+    resolution: {integrity: sha512-f0cRzm6dkyVYV3nPoooP8XlccPQukegwhAnpoLcXy+X+A8KfpGOoXwDr9FLZd3wzgLaBGQBE3lY93Zm/i1JvIQ==}
     engines: {node: '>= 6'}
 
   freeport-async@2.0.0:
@@ -3940,6 +3944,7 @@ packages:
   metro-react-native-babel-preset@0.76.8:
     resolution: {integrity: sha512-Ptza08GgqzxEdK8apYsjTx2S8WDUlS2ilBlu9DR1CUcHmg4g3kOkFylZroogVAUKtpYQNYwAvdsjmrSdDNtiAg==}
     engines: {node: '>=16'}
+    deprecated: Use @react-native/babel-preset instead
     peerDependencies:
       '@babel/core': '*'
 
@@ -7414,7 +7419,7 @@ snapshots:
       ci-info: 3.9.0
       debug: 4.4.0
       env-editor: 0.4.2
-      form-data: 3.0.1
+      form-data: 3.0.4
       freeport-async: 2.0.0
       fs-extra: 8.1.0
       getenv: 1.0.0
@@ -10205,10 +10210,12 @@ snapshots:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
 
-  form-data@3.0.1:
+  form-data@3.0.4:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
+      es-set-tostringtag: 2.1.0
+      hasown: 2.0.2
       mime-types: 2.1.35
 
   freeport-async@2.0.0: {}
