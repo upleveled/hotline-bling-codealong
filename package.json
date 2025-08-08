@@ -41,9 +41,9 @@
     "@types/react-dom": "~18.0.10",
     "detox": "20.40.2",
     "eslint": "9.32.0",
-    "eslint-config-upleveled": "9.2.6",
+    "eslint-config-upleveled": "9.2.12",
     "jest": "30.0.5",
-    "ts-jest": "29.4.0",
-    "typescript": "5.8.3"
+    "ts-jest": "29.4.1",
+    "typescript": "5.9.2"
   }
 }
