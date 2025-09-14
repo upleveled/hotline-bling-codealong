@@ -1,29 +1,34 @@
 {
-  extends: ["github>karlhorky/renovate-config:default.json5"],
+  extends: ['github>karlhorky/renovate-config:default.json5'],
   packageRules: [
     {
       enabled: false,
-      matchPackageNames: ["*"],
+      matchPackageNames: ['*'],
     },
     {
+      // Allow updating these packages, since they are
+      // not managed / restricted by Expo SDK version
+      // https://github.com/renovatebot/config-help/issues/86#issuecomment-415815759
       matchPackageNames: [
-        "@config-plugins/detox",
-        "@expo/xcpretty",
-        "@react-native-community/masked-view",
-        "@react-navigation/native",
-        "@react-navigation/native-stack",
-        "detox",
-        "eslint",
-        "eslint-config-upleveled",
-        "jest",
-        "ts-jest",
-        "typescript",
+        '@config-plugins/detox',
+        '@expo/xcpretty',
+        '@react-native-community/masked-view',
+        '@react-navigation/native',
+        '@react-navigation/native-stack',
+        'detox',
+        'eslint',
+        'eslint-config-upleveled',
+        // Jest is managed by Expo SDK version, but
+        // we want the latest version to keep tests stable
+        'jest',
+        'ts-jest',
+        'typescript',
       ],
       enabled: true,
       automerge: true,
     },
     {
-      matchManagers: ["github-actions"],
+      matchManagers: ['github-actions'],
       enabled: true,
       automerge: true,
     },
