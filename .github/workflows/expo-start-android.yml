@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     name: Expo Dev Server Tests
-    runs-on: macos-13
+    runs-on: macos-15
     timeout-minutes: 45
     steps:
       - name: Checkout
