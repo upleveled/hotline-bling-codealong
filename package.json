@@ -39,11 +39,11 @@
     "@types/node": "18.11.9",
     "@types/react": "~18.2.48",
     "@types/react-dom": "~18.0.10",
-    "detox": "20.41.3",
-    "eslint": "9.35.0",
-    "eslint-config-upleveled": "9.2.15",
+    "detox": "20.42.0",
+    "eslint": "9.36.0",
+    "eslint-config-upleveled": "9.4.0",
     "jest": "30.1.3",
-    "ts-jest": "29.4.3",
+    "ts-jest": "29.4.4",
     "typescript": "5.9.2"
   }
 }
