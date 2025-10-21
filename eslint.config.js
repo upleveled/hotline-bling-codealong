@@ -52,12 +52,6 @@ const config = [
           format: ['camelCase', 'snake_case', 'PascalCase'],
         },
       ],
-      'react/style-prop-object': [
-        'warn',
-        {
-          allow: ['StatusBar'],
-        },
-      ],
     },
   },
   {
