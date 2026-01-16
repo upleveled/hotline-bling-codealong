@@ -106,7 +106,7 @@ jobs:
           script: pnpm detox test --configuration android
 
       - name: Store Detox artifacts on test failure
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: detox-artifacts

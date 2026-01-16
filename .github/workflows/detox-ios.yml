@@ -60,7 +60,7 @@ jobs:
         run: pnpm detox test --configuration ios
 
       # Store any Detox screenshots on test failure
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: detox-artifacts
