@@ -5,7 +5,8 @@ on: [push]
 jobs:
   build:
     name: Detox Integration Tests - Android
-    runs-on: macos-13
+    # Edit to block endless Renovate rebasing
+    runs-on: macos-14
     timeout-minutes: 45
     steps:
       - name: Checkout

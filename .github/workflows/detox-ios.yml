@@ -12,7 +12,7 @@ jobs:
     # HINT: Run 'applesimutils --list' to list your supported devices. It is advised only to specify a device type, e.g., "iPhone Xʀ" and avoid explicit search by OS version.
     # ```
     # However, applesimutils --list reports that a device with "iPhone 13 Pro" exists
-    runs-on: macos-13
+    runs-on: macos-14
 
     timeout-minutes: 45
     steps:
